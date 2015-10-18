@@ -8,12 +8,12 @@
 
 import subprocess
 import requests
-from GenerationTrainingSet import captureGesture();
+from GenerateTrainingSet import captureGesture
 
 class Translator():
     def classify(self, gestureData):
         # Should only return data if confidence is above a certain threshold.
-        return requests.post("AZURE URL HERE", data = "gestureData");
+        return requests.post("AZURE URL HERE", data = "gestureData")
 
 def main():
     # Create a translation object
@@ -24,7 +24,7 @@ def main():
     classificationResult = translator.classify(captureGesture())
 
     # Form bash command to say.
-    bashCommand = "say \"" + classificationResult + "\"";
+    bashCommand = "say \"" + classificationResult + "\""
 
     # If confidence in classification result is above some threshold, then say
     # the classificationResult.
