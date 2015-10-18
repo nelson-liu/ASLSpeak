@@ -39,7 +39,7 @@ class GenerateTrainingSet(Leap.Listener):
                 time.sleep(1)
                 result = self.captureGesture(controller)
                 writeFile.write(word + ',' + result + '\n')
-                print "Gesture successfully recorded. Next one starts in three seconds."
+                print "Gesture successfully recorded. That was time #%d Next one starts on enter..." % i
                 raw_input("Press Enter to continue...")
 
 
