@@ -115,26 +115,505 @@ class GenerateTrainingSet(Leap.Listener):
         hand2RotationAxisZ = 0
         hand2RotationAngle = 0
 
+        ## Hand 1 Finger 1 begins here ##
         hand1Finger1DirectionX = 0
         hand1Finger1DirectionX = 0
         hand1Finger1DirectionX = 0
         hand1Finger1Extended = 0
+        # attributes of finger 1 metacarpals
         hand1Finger1MetacarpalCenterX = 0
-        hand1Finger1MetacarpalCenterY = 0 
+        hand1Finger1MetacarpalCenterY = 0
         hand1Finger1MetacarpalCenterZ = 0
-        hand1Finger1MetacarpalDirection: (0.6, 0.7, -0.5)
-        Up vector: (-0.5, 0.7, 0.5)
-        Center: (-29.6, 168.5, 78.4)
-        Direction: (0.9, 0.3, -0.2)
-        Up vector: (-0.2, 0.9, 0.5)
-        Center: (7.5, 180.8, 68.8)
-        Direction: (0.9, 0.2, -0.3)
-        Up vector: (-0.1, 0.9, 0.4)
-        Center: (33.3, 186.1, 60.7)
-        Direction: (0.9, 0.1, -0.3)
-        Up vector: (0.0, 0.9, 0.4)
-        Tip position: (39.0, 186.7, 58.6) mm
+        hand1Finger1MetacarpalDirectionX = 0
+        hand1Finger1MetacarpalDirectionY = 0
+        hand1Finger1MetacarpalDirectionZ = 0
+        hand1Finger1MetacarpalUpVectorX = 0
+        hand1Finger1MetacarpalUpVectorY = 0
+        hand1Finger1MetacarpalUpVectorZ = 0
+        # attributes of finger 1 proximal phalanx bone
+        hand1Finger1ProximalPhalanxBoneCenterX = 0
+        hand1Finger1ProximalPhalanxBoneCenterY = 0
+        hand1Finger1ProximalPhalanxBoneCenterZ = 0
+        hand1Finger1ProximalPhalanxBoneDirectionX = 0
+        hand1Finger1ProximalPhalanxBoneDirectionY = 0
+        hand1Finger1ProximalPhalanxBoneDirectionZ = 0
+        hand1Finger1ProximalPhalanxBoneUpVectorX = 0
+        hand1Finger1ProximalPhalanxBoneUpVectorY = 0
+        hand1Finger1ProximalPhalanxBoneUpVectorZ = 0
+        # attributes of finger 1 intermediate phalanx bone
+        hand1Finger1IntermediatePhalanxBoneCenterX = 0
+        hand1Finger1IntermediatePhalanxBoneCenterY = 0
+        hand1Finger1IntermediatePhalanxBoneCenterZ = 0
+        hand1Finger1IntermediatePhalanxBoneDirectionX = 0
+        hand1Finger1IntermediatePhalanxBoneDirectionY = 0
+        hand1Finger1IntermediatePhalanxBoneDirectionZ = 0
+        hand1Finger1IntermediatePhalanxBoneUpVectorX = 0
+        hand1Finger1IntermediatePhalanxBoneUpVectorY = 0
+        hand1Finger1IntermediatePhalanxBoneUpVectorZ = 0
+        # attributes of finger 1 distal phalanx bone
+        hand1Finger1DistalPhalanxBoneCenterX = 0
+        hand1Finger1DistalPhalanxBoneCenterY = 0
+        hand1Finger1DistalPhalanxBoneCenterZ = 0
+        hand1Finger1DistalPhalanxBoneDirectionX = 0
+        hand1Finger1DistalPhalanxBoneDirectionY = 0
+        hand1Finger1DistalPhalanxBoneDirectionZ = 0
+        hand1Finger1DistalPhalanxBoneUpVectorX = 0
+        hand1Finger1DistalPhalanxBoneUpVectorY = 0
+        hand1Finger1DistalPhalanxBoneUpVectorZ = 0
+        hand1Finger1TipPositionX = 0
+        hand1Finger1TipPositionY = 0
+        hand1Finger1TipPositionZ = 0
 
+        ## Hand 1 Finger 2 Begins Here ##
+
+        hand1Finger2DirectionX = 0
+        hand1Finger2DirectionX = 0
+        hand1Finger2DirectionX = 0
+        hand1Finger2Extended = 0
+        # attributes of finger 2 metacarpals
+        hand1Finger2MetacarpalCenterX = 0
+        hand1Finger2MetacarpalCenterY = 0
+        hand1Finger2MetacarpalCenterZ = 0
+        hand1Finger2MetacarpalDirectionX = 0
+        hand1Finger2MetacarpalDirectionY = 0
+        hand1Finger2MetacarpalDirectionZ = 0
+        hand1Finger2MetacarpalUpVectorX = 0
+        hand1Finger2MetacarpalUpVectorY = 0
+        hand1Finger2MetacarpalUpVectorZ = 0
+        # attributes of finger 2 proximal phalanx bone
+        hand1Finger2ProximalPhalanxBoneCenterX = 0
+        hand1Finger2ProximalPhalanxBoneCenterY = 0
+        hand1Finger2ProximalPhalanxBoneCenterZ = 0
+        hand1Finger2ProximalPhalanxBoneDirectionX = 0
+        hand1Finger2ProximalPhalanxBoneDirectionY = 0
+        hand1Finger2ProximalPhalanxBoneDirectionZ = 0
+        hand1Finger2ProximalPhalanxBoneUpVectorX = 0
+        hand1Finger2ProximalPhalanxBoneUpVectorY = 0
+        hand1Finger2ProximalPhalanxBoneUpVectorZ = 0
+        # attributes of finger 2 intermediate phalanx bone
+        hand1Finger2IntermediatePhalanxBoneCenterX = 0
+        hand1Finger2IntermediatePhalanxBoneCenterY = 0
+        hand1Finger2IntermediatePhalanxBoneCenterZ = 0
+        hand1Finger2IntermediatePhalanxBoneDirectionX = 0
+        hand1Finger2IntermediatePhalanxBoneDirectionY = 0
+        hand1Finger2IntermediatePhalanxBoneDirectionZ = 0
+        hand1Finger2IntermediatePhalanxBoneUpVectorX = 0
+        hand1Finger2IntermediatePhalanxBoneUpVectorY = 0
+        hand1Finger2IntermediatePhalanxBoneUpVectorZ = 0
+        # attributes of finger 2 distal phalanx bone
+        hand1Finger2DistalPhalanxBoneCenterX = 0
+        hand1Finger2DistalPhalanxBoneCenterY = 0
+        hand1Finger2DistalPhalanxBoneCenterZ = 0
+        hand1Finger2DistalPhalanxBoneDirectionX = 0
+        hand1Finger2DistalPhalanxBoneDirectionY = 0
+        hand1Finger2DistalPhalanxBoneDirectionZ = 0
+        hand1Finger2DistalPhalanxBoneUpVectorX = 0
+        hand1Finger2DistalPhalanxBoneUpVectorY = 0
+        hand1Finger2DistalPhalanxBoneUpVectorZ = 0
+        hand1Finger2TipPositionX = 0
+        hand1Finger2TipPositionY = 0
+        hand1Finger2TipPositionZ = 0
+
+        ## Hand 1 Finger 3 Begins Here ##
+
+        hand1Finger3DirectionX = 0
+        hand1Finger3DirectionX = 0
+        hand1Finger3DirectionX = 0
+        hand1Finger3Extended = 0
+        # attributes of Finger 3 metacarpals
+        hand1Finger3MetacarpalCenterX = 0
+        hand1Finger3MetacarpalCenterY = 0
+        hand1Finger3MetacarpalCenterZ = 0
+        hand1Finger3MetacarpalDirectionX = 0
+        hand1Finger3MetacarpalDirectionY = 0
+        hand1Finger3MetacarpalDirectionZ = 0
+        hand1Finger3MetacarpalUpVectorX = 0
+        hand1Finger3MetacarpalUpVectorY = 0
+        hand1Finger3MetacarpalUpVectorZ = 0
+        # attributes of Finger 3 proximal phalanx bone
+        hand1Finger3ProximalPhalanxBoneCenterX = 0
+        hand1Finger3ProximalPhalanxBoneCenterY = 0
+        hand1Finger3ProximalPhalanxBoneCenterZ = 0
+        hand1Finger3ProximalPhalanxBoneDirectionX = 0
+        hand1Finger3ProximalPhalanxBoneDirectionY = 0
+        hand1Finger3ProximalPhalanxBoneDirectionZ = 0
+        hand1Finger3ProximalPhalanxBoneUpVectorX = 0
+        hand1Finger3ProximalPhalanxBoneUpVectorY = 0
+        hand1Finger3ProximalPhalanxBoneUpVectorZ = 0
+        # attributes of Finger 3 intermediate phalanx bone
+        hand1Finger3IntermediatePhalanxBoneCenterX = 0
+        hand1Finger3IntermediatePhalanxBoneCenterY = 0
+        hand1Finger3IntermediatePhalanxBoneCenterZ = 0
+        hand1Finger3IntermediatePhalanxBoneDirectionX = 0
+        hand1Finger3IntermediatePhalanxBoneDirectionY = 0
+        hand1Finger3IntermediatePhalanxBoneDirectionZ = 0
+        hand1Finger3IntermediatePhalanxBoneUpVectorX = 0
+        hand1Finger3IntermediatePhalanxBoneUpVectorY = 0
+        hand1Finger3IntermediatePhalanxBoneUpVectorZ = 0
+        # attributes of Finger 3 distal phalanx bone
+        hand1Finger3DistalPhalanxBoneCenterX = 0
+        hand1Finger3DistalPhalanxBoneCenterY = 0
+        hand1Finger3DistalPhalanxBoneCenterZ = 0
+        hand1Finger3DistalPhalanxBoneDirectionX = 0
+        hand1Finger3DistalPhalanxBoneDirectionY = 0
+        hand1Finger3DistalPhalanxBoneDirectionZ = 0
+        hand1Finger3DistalPhalanxBoneUpVectorX = 0
+        hand1Finger3DistalPhalanxBoneUpVectorY = 0
+        hand1Finger3DistalPhalanxBoneUpVectorZ = 0
+        hand1Finger3TipPositionX = 0
+        hand1Finger3TipPositionY = 0
+        hand1Finger3TipPositionZ = 0
+
+        ## Hand 1 Finger 4 Begins Here ##
+
+        hand1Finger4DirectionX = 0
+        hand1Finger4DirectionX = 0
+        hand1Finger4DirectionX = 0
+        hand1Finger4Extended = 0
+        # attributes of Finger 4 metacarpals
+        hand1Finger4MetacarpalCenterX = 0
+        hand1Finger4MetacarpalCenterY = 0
+        hand1Finger4MetacarpalCenterZ = 0
+        hand1Finger4MetacarpalDirectionX = 0
+        hand1Finger4MetacarpalDirectionY = 0
+        hand1Finger4MetacarpalDirectionZ = 0
+        hand1Finger4MetacarpalUpVectorX = 0
+        hand1Finger4MetacarpalUpVectorY = 0
+        hand1Finger4MetacarpalUpVectorZ = 0
+        # attributes of Finger 4 proximal phalanx bone
+        hand1Finger4ProximalPhalanxBoneCenterX = 0
+        hand1Finger4ProximalPhalanxBoneCenterY = 0
+        hand1Finger4ProximalPhalanxBoneCenterZ = 0
+        hand1Finger4ProximalPhalanxBoneDirectionX = 0
+        hand1Finger4ProximalPhalanxBoneDirectionY = 0
+        hand1Finger4ProximalPhalanxBoneDirectionZ = 0
+        hand1Finger4ProximalPhalanxBoneUpVectorX = 0
+        hand1Finger4ProximalPhalanxBoneUpVectorY = 0
+        hand1Finger4ProximalPhalanxBoneUpVectorZ = 0
+        # attributes of Finger 4 intermediate phalanx bone
+        hand1Finger4IntermediatePhalanxBoneCenterX = 0
+        hand1Finger4IntermediatePhalanxBoneCenterY = 0
+        hand1Finger4IntermediatePhalanxBoneCenterZ = 0
+        hand1Finger4IntermediatePhalanxBoneDirectionX = 0
+        hand1Finger4IntermediatePhalanxBoneDirectionY = 0
+        hand1Finger4IntermediatePhalanxBoneDirectionZ = 0
+        hand1Finger4IntermediatePhalanxBoneUpVectorX = 0
+        hand1Finger4IntermediatePhalanxBoneUpVectorY = 0
+        hand1Finger4IntermediatePhalanxBoneUpVectorZ = 0
+        # attributes of Finger 4 distal phalanx bone
+        hand1Finger4DistalPhalanxBoneCenterX = 0
+        hand1Finger4DistalPhalanxBoneCenterY = 0
+        hand1Finger4DistalPhalanxBoneCenterZ = 0
+        hand1Finger4DistalPhalanxBoneDirectionX = 0
+        hand1Finger4DistalPhalanxBoneDirectionY = 0
+        hand1Finger4DistalPhalanxBoneDirectionZ = 0
+        hand1Finger4DistalPhalanxBoneUpVectorX = 0
+        hand1Finger4DistalPhalanxBoneUpVectorY = 0
+        hand1Finger4DistalPhalanxBoneUpVectorZ = 0
+        hand1Finger4TipPositionX = 0
+        hand1Finger4TipPositionY = 0
+        hand1Finger4TipPositionZ = 0
+
+        ## Hand 1 Finger 5 Begins Here ##
+
+        hand1Finger5DirectionX = 0
+        hand1Finger5DirectionX = 0
+        hand1Finger5DirectionX = 0
+        hand1Finger5Extended = 0
+        # attributes of Finger 5 metacarpals
+        hand1Finger5MetacarpalCenterX = 0
+        hand1Finger5MetacarpalCenterY = 0
+        hand1Finger5MetacarpalCenterZ = 0
+        hand1Finger5MetacarpalDirectionX = 0
+        hand1Finger5MetacarpalDirectionY = 0
+        hand1Finger5MetacarpalDirectionZ = 0
+        hand1Finger5MetacarpalUpVectorX = 0
+        hand1Finger5MetacarpalUpVectorY = 0
+        hand1Finger5MetacarpalUpVectorZ = 0
+        # attributes of Finger 5 proximal phalanx bone
+        hand1Finger5ProximalPhalanxBoneCenterX = 0
+        hand1Finger5ProximalPhalanxBoneCenterY = 0
+        hand1Finger5ProximalPhalanxBoneCenterZ = 0
+        hand1Finger5ProximalPhalanxBoneDirectionX = 0
+        hand1Finger5ProximalPhalanxBoneDirectionY = 0
+        hand1Finger5ProximalPhalanxBoneDirectionZ = 0
+        hand1Finger5ProximalPhalanxBoneUpVectorX = 0
+        hand1Finger5ProximalPhalanxBoneUpVectorY = 0
+        hand1Finger5ProximalPhalanxBoneUpVectorZ = 0
+        # attributes of Finger 5 intermediate phalanx bone
+        hand1Finger5IntermediatePhalanxBoneCenterX = 0
+        hand1Finger5IntermediatePhalanxBoneCenterY = 0
+        hand1Finger5IntermediatePhalanxBoneCenterZ = 0
+        hand1Finger5IntermediatePhalanxBoneDirectionX = 0
+        hand1Finger5IntermediatePhalanxBoneDirectionY = 0
+        hand1Finger5IntermediatePhalanxBoneDirectionZ = 0
+        hand1Finger5IntermediatePhalanxBoneUpVectorX = 0
+        hand1Finger5IntermediatePhalanxBoneUpVectorY = 0
+        hand1Finger5IntermediatePhalanxBoneUpVectorZ = 0
+        # attributes of Finger 5 distal phalanx bone
+        hand1Finger5DistalPhalanxBoneCenterX = 0
+        hand1Finger5DistalPhalanxBoneCenterY = 0
+        hand1Finger5DistalPhalanxBoneCenterZ = 0
+        hand1Finger5DistalPhalanxBoneDirectionX = 0
+        hand1Finger5DistalPhalanxBoneDirectionY = 0
+        hand1Finger5DistalPhalanxBoneDirectionZ = 0
+        hand1Finger5DistalPhalanxBoneUpVectorX = 0
+        hand1Finger5DistalPhalanxBoneUpVectorY = 0
+        hand1Finger5DistalPhalanxBoneUpVectorZ = 0
+        hand1Finger5TipPositionX = 0
+        hand1Finger5TipPositionY = 0
+        hand1Finger5TipPositionZ = 0
+
+        ## Hand 2 Finger 1 begins here ##
+        hand2Finger1DirectionX = 0
+        hand2Finger1DirectionX = 0
+        hand2Finger1DirectionX = 0
+        hand2Finger1Extended = 0
+        # attributes of finger 1 metacarpals
+        hand2Finger1MetacarpalCenterX = 0
+        hand2Finger1MetacarpalCenterY = 0
+        hand2Finger1MetacarpalCenterZ = 0
+        hand2Finger1MetacarpalDirectionX = 0
+        hand2Finger1MetacarpalDirectionY = 0
+        hand2Finger1MetacarpalDirectionZ = 0
+        hand2Finger1MetacarpalUpVectorX = 0
+        hand2Finger1MetacarpalUpVectorY = 0
+        hand2Finger1MetacarpalUpVectorZ = 0
+        # attributes of finger 1 proximal phalanx bone
+        hand2Finger1ProximalPhalanxBoneCenterX = 0
+        hand2Finger1ProximalPhalanxBoneCenterY = 0
+        hand2Finger1ProximalPhalanxBoneCenterZ = 0
+        hand2Finger1ProximalPhalanxBoneDirectionX = 0
+        hand2Finger1ProximalPhalanxBoneDirectionY = 0
+        hand2Finger1ProximalPhalanxBoneDirectionZ = 0
+        hand2Finger1ProximalPhalanxBoneUpVectorX = 0
+        hand2Finger1ProximalPhalanxBoneUpVectorY = 0
+        hand2Finger1ProximalPhalanxBoneUpVectorZ = 0
+        # attributes of finger 1 intermediate phalanx bone
+        hand2Finger1IntermediatePhalanxBoneCenterX = 0
+        hand2Finger1IntermediatePhalanxBoneCenterY = 0
+        hand2Finger1IntermediatePhalanxBoneCenterZ = 0
+        hand2Finger1IntermediatePhalanxBoneDirectionX = 0
+        hand2Finger1IntermediatePhalanxBoneDirectionY = 0
+        hand2Finger1IntermediatePhalanxBoneDirectionZ = 0
+        hand2Finger1IntermediatePhalanxBoneUpVectorX = 0
+        hand2Finger1IntermediatePhalanxBoneUpVectorY = 0
+        hand2Finger1IntermediatePhalanxBoneUpVectorZ = 0
+        # attributes of finger 1 distal phalanx bone
+        hand2Finger1DistalPhalanxBoneCenterX = 0
+        hand2Finger1DistalPhalanxBoneCenterY = 0
+        hand2Finger1DistalPhalanxBoneCenterZ = 0
+        hand2Finger1DistalPhalanxBoneDirectionX = 0
+        hand2Finger1DistalPhalanxBoneDirectionY = 0
+        hand2Finger1DistalPhalanxBoneDirectionZ = 0
+        hand2Finger1DistalPhalanxBoneUpVectorX = 0
+        hand2Finger1DistalPhalanxBoneUpVectorY = 0
+        hand2Finger1DistalPhalanxBoneUpVectorZ = 0
+        hand2Finger1TipPositionX = 0
+        hand2Finger1TipPositionY = 0
+        hand2Finger1TipPositionZ = 0
+
+        ## Hand 2 Finger 2 Begins Here ##
+
+        hand2Finger2DirectionX = 0
+        hand2Finger2DirectionX = 0
+        hand2Finger2DirectionX = 0
+        hand2Finger2Extended = 0
+        # attributes of finger 2 metacarpals
+        hand2Finger2MetacarpalCenterX = 0
+        hand2Finger2MetacarpalCenterY = 0
+        hand2Finger2MetacarpalCenterZ = 0
+        hand2Finger2MetacarpalDirectionX = 0
+        hand2Finger2MetacarpalDirectionY = 0
+        hand2Finger2MetacarpalDirectionZ = 0
+        hand2Finger2MetacarpalUpVectorX = 0
+        hand2Finger2MetacarpalUpVectorY = 0
+        hand2Finger2MetacarpalUpVectorZ = 0
+        # attributes of finger 2 proximal phalanx bone
+        hand2Finger2ProximalPhalanxBoneCenterX = 0
+        hand2Finger2ProximalPhalanxBoneCenterY = 0
+        hand2Finger2ProximalPhalanxBoneCenterZ = 0
+        hand2Finger2ProximalPhalanxBoneDirectionX = 0
+        hand2Finger2ProximalPhalanxBoneDirectionY = 0
+        hand2Finger2ProximalPhalanxBoneDirectionZ = 0
+        hand2Finger2ProximalPhalanxBoneUpVectorX = 0
+        hand2Finger2ProximalPhalanxBoneUpVectorY = 0
+        hand2Finger2ProximalPhalanxBoneUpVectorZ = 0
+        # attributes of finger 2 intermediate phalanx bone
+        hand2Finger2IntermediatePhalanxBoneCenterX = 0
+        hand2Finger2IntermediatePhalanxBoneCenterY = 0
+        hand2Finger2IntermediatePhalanxBoneCenterZ = 0
+        hand2Finger2IntermediatePhalanxBoneDirectionX = 0
+        hand2Finger2IntermediatePhalanxBoneDirectionY = 0
+        hand2Finger2IntermediatePhalanxBoneDirectionZ = 0
+        hand2Finger2IntermediatePhalanxBoneUpVectorX = 0
+        hand2Finger2IntermediatePhalanxBoneUpVectorY = 0
+        hand2Finger2IntermediatePhalanxBoneUpVectorZ = 0
+        # attributes of finger 2 distal phalanx bone
+        hand2Finger2DistalPhalanxBoneCenterX = 0
+        hand2Finger2DistalPhalanxBoneCenterY = 0
+        hand2Finger2DistalPhalanxBoneCenterZ = 0
+        hand2Finger2DistalPhalanxBoneDirectionX = 0
+        hand2Finger2DistalPhalanxBoneDirectionY = 0
+        hand2Finger2DistalPhalanxBoneDirectionZ = 0
+        hand2Finger2DistalPhalanxBoneUpVectorX = 0
+        hand2Finger2DistalPhalanxBoneUpVectorY = 0
+        hand2Finger2DistalPhalanxBoneUpVectorZ = 0
+        hand2Finger2TipPositionX = 0
+        hand2Finger2TipPositionY = 0
+        hand2Finger2TipPositionZ = 0
+
+        ## Hand 2 Finger 3 Begins Here ##
+
+        hand2Finger3DirectionX = 0
+        hand2Finger3DirectionX = 0
+        hand2Finger3DirectionX = 0
+        hand2Finger3Extended = 0
+        # attributes of Finger 3 metacarpals
+        hand2Finger3MetacarpalCenterX = 0
+        hand2Finger3MetacarpalCenterY = 0
+        hand2Finger3MetacarpalCenterZ = 0
+        hand2Finger3MetacarpalDirectionX = 0
+        hand2Finger3MetacarpalDirectionY = 0
+        hand2Finger3MetacarpalDirectionZ = 0
+        hand2Finger3MetacarpalUpVectorX = 0
+        hand2Finger3MetacarpalUpVectorY = 0
+        hand2Finger3MetacarpalUpVectorZ = 0
+        # attributes of Finger 3 proximal phalanx bone
+        hand2Finger3ProximalPhalanxBoneCenterX = 0
+        hand2Finger3ProximalPhalanxBoneCenterY = 0
+        hand2Finger3ProximalPhalanxBoneCenterZ = 0
+        hand2Finger3ProximalPhalanxBoneDirectionX = 0
+        hand2Finger3ProximalPhalanxBoneDirectionY = 0
+        hand2Finger3ProximalPhalanxBoneDirectionZ = 0
+        hand2Finger3ProximalPhalanxBoneUpVectorX = 0
+        hand2Finger3ProximalPhalanxBoneUpVectorY = 0
+        hand2Finger3ProximalPhalanxBoneUpVectorZ = 0
+        # attributes of Finger 3 intermediate phalanx bone
+        hand2Finger3IntermediatePhalanxBoneCenterX = 0
+        hand2Finger3IntermediatePhalanxBoneCenterY = 0
+        hand2Finger3IntermediatePhalanxBoneCenterZ = 0
+        hand2Finger3IntermediatePhalanxBoneDirectionX = 0
+        hand2Finger3IntermediatePhalanxBoneDirectionY = 0
+        hand2Finger3IntermediatePhalanxBoneDirectionZ = 0
+        hand2Finger3IntermediatePhalanxBoneUpVectorX = 0
+        hand2Finger3IntermediatePhalanxBoneUpVectorY = 0
+        hand2Finger3IntermediatePhalanxBoneUpVectorZ = 0
+        # attributes of Finger 3 distal phalanx bone
+        hand2Finger3DistalPhalanxBoneCenterX = 0
+        hand2Finger3DistalPhalanxBoneCenterY = 0
+        hand2Finger3DistalPhalanxBoneCenterZ = 0
+        hand2Finger3DistalPhalanxBoneDirectionX = 0
+        hand2Finger3DistalPhalanxBoneDirectionY = 0
+        hand2Finger3DistalPhalanxBoneDirectionZ = 0
+        hand2Finger3DistalPhalanxBoneUpVectorX = 0
+        hand2Finger3DistalPhalanxBoneUpVectorY = 0
+        hand2Finger3DistalPhalanxBoneUpVectorZ = 0
+        hand2Finger3TipPositionX = 0
+        hand2Finger3TipPositionY = 0
+        hand2Finger3TipPositionZ = 0
+
+        ## Hand 2 Finger 4 Begins Here ##
+
+        hand2Finger4DirectionX = 0
+        hand2Finger4DirectionX = 0
+        hand2Finger4DirectionX = 0
+        hand2Finger4Extended = 0
+        # attributes of Finger 4 metacarpals
+        hand2Finger4MetacarpalCenterX = 0
+        hand2Finger4MetacarpalCenterY = 0
+        hand2Finger4MetacarpalCenterZ = 0
+        hand2Finger4MetacarpalDirectionX = 0
+        hand2Finger4MetacarpalDirectionY = 0
+        hand2Finger4MetacarpalDirectionZ = 0
+        hand2Finger4MetacarpalUpVectorX = 0
+        hand2Finger4MetacarpalUpVectorY = 0
+        hand2Finger4MetacarpalUpVectorZ = 0
+        # attributes of Finger 4 proximal phalanx bone
+        hand2Finger4ProximalPhalanxBoneCenterX = 0
+        hand2Finger4ProximalPhalanxBoneCenterY = 0
+        hand2Finger4ProximalPhalanxBoneCenterZ = 0
+        hand2Finger4ProximalPhalanxBoneDirectionX = 0
+        hand2Finger4ProximalPhalanxBoneDirectionY = 0
+        hand2Finger4ProximalPhalanxBoneDirectionZ = 0
+        hand2Finger4ProximalPhalanxBoneUpVectorX = 0
+        hand2Finger4ProximalPhalanxBoneUpVectorY = 0
+        hand2Finger4ProximalPhalanxBoneUpVectorZ = 0
+        # attributes of Finger 4 intermediate phalanx bone
+        hand2Finger4IntermediatePhalanxBoneCenterX = 0
+        hand2Finger4IntermediatePhalanxBoneCenterY = 0
+        hand2Finger4IntermediatePhalanxBoneCenterZ = 0
+        hand2Finger4IntermediatePhalanxBoneDirectionX = 0
+        hand2Finger4IntermediatePhalanxBoneDirectionY = 0
+        hand2Finger4IntermediatePhalanxBoneDirectionZ = 0
+        hand2Finger4IntermediatePhalanxBoneUpVectorX = 0
+        hand2Finger4IntermediatePhalanxBoneUpVectorY = 0
+        hand2Finger4IntermediatePhalanxBoneUpVectorZ = 0
+        # attributes of Finger 4 distal phalanx bone
+        hand2Finger4DistalPhalanxBoneCenterX = 0
+        hand2Finger4DistalPhalanxBoneCenterY = 0
+        hand2Finger4DistalPhalanxBoneCenterZ = 0
+        hand2Finger4DistalPhalanxBoneDirectionX = 0
+        hand2Finger4DistalPhalanxBoneDirectionY = 0
+        hand2Finger4DistalPhalanxBoneDirectionZ = 0
+        hand2Finger4DistalPhalanxBoneUpVectorX = 0
+        hand2Finger4DistalPhalanxBoneUpVectorY = 0
+        hand2Finger4DistalPhalanxBoneUpVectorZ = 0
+        hand2Finger4TipPositionX = 0
+        hand2Finger4TipPositionY = 0
+        hand2Finger4TipPositionZ = 0
+
+        ## Hand 2 Finger 5 Begins Here ##
+
+        hand2Finger5DirectionX = 0
+        hand2Finger5DirectionX = 0
+        hand2Finger5DirectionX = 0
+        hand2Finger5Extended = 0
+        # attributes of Finger 5 metacarpals
+        hand2Finger5MetacarpalCenterX = 0
+        hand2Finger5MetacarpalCenterY = 0
+        hand2Finger5MetacarpalCenterZ = 0
+        hand2Finger5MetacarpalDirectionX = 0
+        hand2Finger5MetacarpalDirectionY = 0
+        hand2Finger5MetacarpalDirectionZ = 0
+        hand2Finger5MetacarpalUpVectorX = 0
+        hand2Finger5MetacarpalUpVectorY = 0
+        hand2Finger5MetacarpalUpVectorZ = 0
+        # attributes of Finger 5 proximal phalanx bone
+        hand2Finger5ProximalPhalanxBoneCenterX = 0
+        hand2Finger5ProximalPhalanxBoneCenterY = 0
+        hand2Finger5ProximalPhalanxBoneCenterZ = 0
+        hand2Finger5ProximalPhalanxBoneDirectionX = 0
+        hand2Finger5ProximalPhalanxBoneDirectionY = 0
+        hand2Finger5ProximalPhalanxBoneDirectionZ = 0
+        hand2Finger5ProximalPhalanxBoneUpVectorX = 0
+        hand2Finger5ProximalPhalanxBoneUpVectorY = 0
+        hand2Finger5ProximalPhalanxBoneUpVectorZ = 0
+        # attributes of Finger 5 intermediate phalanx bone
+        hand2Finger5IntermediatePhalanxBoneCenterX = 0
+        hand2Finger5IntermediatePhalanxBoneCenterY = 0
+        hand2Finger5IntermediatePhalanxBoneCenterZ = 0
+        hand2Finger5IntermediatePhalanxBoneDirectionX = 0
+        hand2Finger5IntermediatePhalanxBoneDirectionY = 0
+        hand2Finger5IntermediatePhalanxBoneDirectionZ = 0
+        hand2Finger5IntermediatePhalanxBoneUpVectorX = 0
+        hand2Finger5IntermediatePhalanxBoneUpVectorY = 0
+        hand2Finger5IntermediatePhalanxBoneUpVectorZ = 0
+        # attributes of Finger 5 distal phalanx bone
+        hand2Finger5DistalPhalanxBoneCenterX = 0
+        hand2Finger5DistalPhalanxBoneCenterY = 0
+        hand2Finger5DistalPhalanxBoneCenterZ = 0
+        hand2Finger5DistalPhalanxBoneDirectionX = 0
+        hand2Finger5DistalPhalanxBoneDirectionY = 0
+        hand2Finger5DistalPhalanxBoneDirectionZ = 0
+        hand2Finger5DistalPhalanxBoneUpVectorX = 0
+        hand2Finger5DistalPhalanxBoneUpVectorY = 0
+        hand2Finger5DistalPhalanxBoneUpVectorZ = 0
+        hand2Finger5TipPositionX = 0
+        hand2Finger5TipPositionY = 0
+        hand2Finger5TipPositionZ = 0
+
+        # populate hand data
         for frame in frames:
             sumHands += len(frame.hands)
             sumFingers += len(frame.fingers)
