@@ -32,14 +32,14 @@ class GenerateTrainingSet(Leap.Listener):
         print "Exited"
 
     def doTheThing(self, controller):
-        writeFile = open("/Users/NickBowman/Desktop/trainingSet.txt", "w")
+        writeFile = open("/Users/nelsonliu/Desktop/trainingSet.txt", "w")
         for word in self.words_to_define:
             for i in xrange(0, self.NUM_TRAINING_EXAMPLES):
                 print "Make gesture now for %s" % word
                 time.sleep(1)
                 result = self.captureGesture(controller)
                 writeFile.write(word + ',' + result + '\n')
-                print "Gesture successfully recorded. That was time #%d Next one starts on enter..." % i
+                print "Gesture successfully recorded. That was time #%d Next one starts on enter..." % (i+1)
                 raw_input("Press Enter to continue...")
 
 
