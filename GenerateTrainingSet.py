@@ -165,24 +165,67 @@ class GenerateTrainingSet(Leap.Listener):
                 hand1GrabStrength += hand1.grab_strength
                 hand1PinchStrength += hand1.pinch_strength
                 hand1Confidence += hand1.confidence
-                hand1ArmDirectionVector
-                hand1ArmDirectionX += 0
-                hand1ArmDirectionY += 0
-                hand1ArmDirectionZ += 0
-                hand1ArmCenterX += 0
-                hand1ArmCenterY += 0
-                hand1ArmCenterZ += 0
-                hand1ArmUpVectorX += 0
-                hand1ArmUpVectorY += 0
-                hand1ArmUpVectorZ += 0
-                hand1TranslationX += 0
-                hand1TranslationY += 0
-                hand1TranslationZ += 0
-                hand1RotationAxisX += 0
-                hand1RotationAxisY += 0
-                hand1RotationAxisZ += 0
-                hand1RotationAngle += 0
-
+                hand1ArmDirectionVector = hand1.arm.direction
+                hand1ArmDirectionX += hand1ArmDirectionVector[0]
+                hand1ArmDirectionY += hand1ArmDirectionVector[1]
+                hand1ArmDirectionZ += hand1ArmDirectionVector[2]
+                hand1ArmCenterVector = hand1.arm.elbow_position + (hand1.arm.wrist_position - hand1.arm.elbow_position) * .05
+                hand1ArmCenterX += hand1ArmCenterVector[0]
+                hand1ArmCenterY += hand1ArmCenterVector[1]
+                hand1ArmCenterZ += hand1ArmCenterVector[2]
+                hand1ArmUpVector = hand1.arm.basis[1]
+                hand1ArmUpVectorX += hand1ArmUpVector[0]
+                hand1ArmUpVectorY += hand1ArmUpVector[1]
+                hand1ArmUpVectorZ += hand1ArmUpVector[2]
+                if ( previousFrame and previousFrame.valid):
+                    hand1TranslationVector = hand1.translation(previousFrame)
+                    hand1TranslationX += hand1TranslationVector[0]
+                    hand1TranslationY += hand1TranslationVector[1]
+                    hand1TranslationZ += hand1TranslationVector[2]
+                    hand1RotationAxisVector = hand1.rotationAxis(previousFrame)
+                    hand1RotationAxisX += hand1RotationAxisVector[0]
+                    hand1RotationAxisY += hand1RotationAxisVector[1]
+                    hand1RotationAxisZ += hand1RotationAxisVector[2]
+                    hand1RotationAngle += hand1.rotationAngle(previousFrame)
+            if ( frame.hands[1] is not None):
+                hand2 = frame.hands[1]
+                if ( hand2.isLeft):
+                    hand2Type += -1
+                else:
+                    hand2Type += 1
+                hand2DirectionVector = hand2.direction
+                hand2DirectionX += hand2DirectionVector[0]
+                hand2DirectionY += hand2DirectionVector[1]
+                hand2DirectionZ += hand2DirectionVector[2]
+                hand2PalmPositionVector += hand2.palm_position
+                hand2PalmPositionX += hand2PalmPositionVector[0]
+                hand2PalmPositionY += hand2PalmPositionVector[1]
+                hand2PalmPositionZ += hand2PalmPositionVector[2]
+                hand2GrabStrength += hand2.grab_strength
+                hand2PinchStrength += hand2.pinch_strength
+                hand2Confidence += hand2.confidence
+                hand2ArmDirectionVector = hand2.arm.direction
+                hand2ArmDirectionX += hand2ArmDirectionVector[0]
+                hand2ArmDirectionY += hand2ArmDirectionVector[1]
+                hand2ArmDirectionZ += hand2ArmDirectionVector[2]
+                hand2ArmCenterVector = hand2.arm.elbow_position + (hand2.arm.wrist_position - hand2.arm.elbow_position) * .05
+                hand2ArmCenterX += hand2ArmCenterVector[0]
+                hand2ArmCenterY += hand2ArmCenterVector[1]
+                hand2ArmCenterZ += hand2ArmCenterVector[2]
+                hand2ArmUpVector = hand2.arm.basis[1]
+                hand2ArmUpVectorX += hand2ArmUpVector[0]
+                hand2ArmUpVectorY += hand2ArmUpVector[1]
+                hand2ArmUpVectorZ += hand2ArmUpVector[2]
+                if ( previousFrame and previousFrame.valid):
+                    hand2TranslationVector = hand2.translation(previousFrame)
+                    hand2TranslationX += hand2TranslationVector[0]
+                    hand2TranslationY += hand2TranslationVector[1]
+                    hand2TranslationZ += hand2TranslationVector[2]
+                    hand2RotationAxisVector = hand2.rotationAxis(previousFrame)
+                    hand2RotationAxisX += hand2RotationAxisVector[0]
+                    hand2RotationAxisY += hand2RotationAxisVector[1]
+                    hand2RotationAxisZ += hand2RotationAxisVector[2]
+                    hand2RotationAngle += hand2.rotationAngle(previousFrame)
 
 
 
