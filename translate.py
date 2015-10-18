@@ -8,7 +8,8 @@
 
 import subprocess
 import requests
-from GenerateTrainingSet import captureGesture
+import Leap
+from GenerateTrainingSet import GenerateTrainingSet
 
 class Translator():
     def classify(self, gestureData):
@@ -16,22 +17,24 @@ class Translator():
         return requests.post("AZURE URL HERE", data = "gestureData")
 
 def main():
-    # Create a translation object
-    translator = Translator()
+    while True:
+        # Create a translation object
+        translator = Translator()
 
-    # Receive gesture data from the Leap Motion, and then send it to our
-    # Azure ML classification web service.
-    classificationResult = translator.classify(captureGesture())
+        # create an object to capture gestures
+        gestureListener = GenerateTrainingSet()
 
-    # Form bash command to say.
-    bashCommand = "say \"" + classificationResult + "\""
+        # create a leap controller
+        controller = Leap.Controller()
 
-    # If confidence in classification result is above some threshold, then say
-    # the classificationResult.
-    if(classificationConfidence > .8):
-        subprocess.Popen(bashCommand)
+
+        # Receive gesture data from the Leap Motion, and then send it to our
+        # Azure ML classification web service.
+        classificationResult = translator.classify(gestureListener.generateGesture(controller))
+
+        # Form bash command to say.
+        bashCommand = "say \"" + classificationResult + "\""
 
 
 if __name__ == "__main__":
-    while True:
-        main()
+    main()
