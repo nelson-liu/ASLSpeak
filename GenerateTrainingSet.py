@@ -32,7 +32,7 @@ class GenerateTrainingSet(Leap.Listener):
         print "Exited"
 
     def doTheThing(self, controller):
-        writeFile = open("/Users/nelsonliu/Desktop/trainingSet.txt", "w")
+        writeFile = open("/Users/NickBowman/Desktop/trainingSet.csv", "w")
         for word in self.words_to_define:
             for i in xrange(0, self.NUM_TRAINING_EXAMPLES):
                 print "Make gesture now for %s" % word

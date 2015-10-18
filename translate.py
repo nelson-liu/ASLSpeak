@@ -45,24 +45,24 @@ class Translator():
 
 
 def main():
-    # while True:
-        # Create a translation object
-        translator = Translator()
+    
+     # Create a translation object
+    translator = Translator()
 
-        # create an object to capture gestures
-        gestureListener = GenerateTrainingSet()
+            # create an object to capture gestures
+    gestureListener = GenerateTrainingSet()
 
-        # create a leap controller
-        controller = Leap.Controller()
+            # create a leap controller
+    controller = Leap.Controller()
 
 
-        # Receive gesture data from the Leap Motion, and then send it to our
-        # Azure ML classification web service.
-        classificationResult = translator.classify(gestureListener.captureGesture(controller))
+            # Receive gesture data from the Leap Motion, and then send it to our
+            # Azure ML classification web service.
+    classificationResult = translator.classify(gestureListener.captureGesture(controller))
 
-        # Form bash command to say.
-        bashCommand = "say \"" + classificationResult + "\""
-        subprocess.Popen(bashCommand, shell = True)
+            # Form bash command to say.
+    bashCommand = "say \"" + classificationResult + "\""
+    subprocess.Popen(bashCommand, shell = True)
 
 
 if __name__ == "__main__":
