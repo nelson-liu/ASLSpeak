@@ -35,9 +35,10 @@ class GenerateTrainingSet(Leap.Listener):
         writeFile = open("/Users/NickBowman/Desktop/trainingSet.txt", "w")
         for word in self.words_to_define:
             for i in xrange(0, self.NUM_TRAINING_EXAMPLES):
-                print "Make gesture now"
+                print "Make gesture now for %s" % word
+                time.sleep(1)
                 result = self.generateGesture(controller)
-                writeFile.write(result + '\n')
+                writeFile.write(word + ',' + result + '\n')
                 print "Gesture successfully recorded. Next one starts in three seconds."
                 time.sleep(3)
 
@@ -77,9 +78,6 @@ class GenerateTrainingSet(Leap.Listener):
         hand1ArmCenterX = 0
         hand1ArmCenterY = 0
         hand1ArmCenterZ = 0
-        hand1ArmUpVectorX = 0
-        hand1ArmUpVectorY = 0
-        hand1ArmUpVectorZ = 0
         hand1TranslationX = 0
         hand1TranslationY = 0
         hand1TranslationZ = 0
@@ -617,7 +615,7 @@ class GenerateTrainingSet(Leap.Listener):
         for frame in frames:
             sumHands += len(frame.hands)
             sumFingers += len(frame.fingers)
-            if ( previousFrame and previousFrame.valid):
+            if ( previousFrame and previousFrame.is_valid):
                 translationVector = frame.translation(previousFrame)
                 sumTranlsationX += translationVector[0]
                 sumTranslationY += translationVector[1]
@@ -626,18 +624,18 @@ class GenerateTrainingSet(Leap.Listener):
                 rotationAxisX += rotationAxisVector[0]
                 rotationAxisY += rotationAxisVector[1]
                 rotationAxisZ += rotationAxisVector[2]
-                rotationAngle += frame.rotation_angle[previousFrame]
+                rotationAngle += frame.rotation_angle(previousFrame)
             if ( frame.hands[0] is not None):
                 hand1 = frame.hands[0]
-                if ( hand1.isLeft):
-                    hand1Type += -1
-                else:
-                    hand1Type += 1
+                #if ( hand1.isLeft):
+                 #   hand1Type += -1
+                #else:
+                 #   hand1Type += 1
                 hand1DirectionVector = hand1.direction
                 hand1DirectionX += hand1DirectionVector[0]
                 hand1DirectionY += hand1DirectionVector[1]
                 hand1DirectionZ += hand1DirectionVector[2]
-                hand1PalmPositionVector += hand1.palm_position
+                hand1PalmPositionVector = hand1.palm_position
                 hand1PalmPositionX += hand1PalmPositionVector[0]
                 hand1PalmPositionY += hand1PalmPositionVector[1]
                 hand1PalmPositionZ += hand1PalmPositionVector[2]
@@ -652,31 +650,27 @@ class GenerateTrainingSet(Leap.Listener):
                 hand1ArmCenterX += hand1ArmCenterVector[0]
                 hand1ArmCenterY += hand1ArmCenterVector[1]
                 hand1ArmCenterZ += hand1ArmCenterVector[2]
-                hand1ArmUpVector = hand1.arm.basis[1]
-                hand1ArmUpVectorX += hand1ArmUpVector[0]
-                hand1ArmUpVectorY += hand1ArmUpVector[1]
-                hand1ArmUpVectorZ += hand1ArmUpVector[2]
-                if ( previousFrame and previousFrame.valid):
+                if ( previousFrame and previousFrame.is_valid):
                     hand1TranslationVector = hand1.translation(previousFrame)
                     hand1TranslationX += hand1TranslationVector[0]
                     hand1TranslationY += hand1TranslationVector[1]
                     hand1TranslationZ += hand1TranslationVector[2]
-                    hand1RotationAxisVector = hand1.rotationAxis(previousFrame)
+                    hand1RotationAxisVector = hand1.rotation_axis(previousFrame)
                     hand1RotationAxisX += hand1RotationAxisVector[0]
                     hand1RotationAxisY += hand1RotationAxisVector[1]
                     hand1RotationAxisZ += hand1RotationAxisVector[2]
-                    hand1RotationAngle += hand1.rotationAngle(previousFrame)
+                    hand1RotationAngle += hand1.rotation_angle(previousFrame)
             if ( frame.hands[1] is not None):
                 hand2 = frame.hands[1]
-                if ( hand2.isLeft):
-                    hand2Type += -1
-                else:
-                    hand2Type += 1
+                # if ( hand2.isLeft):
+                #     hand2Type += -1
+                # else:
+                #     hand2Type += 1
                 hand2DirectionVector = hand2.direction
                 hand2DirectionX += hand2DirectionVector[0]
                 hand2DirectionY += hand2DirectionVector[1]
                 hand2DirectionZ += hand2DirectionVector[2]
-                hand2PalmPositionVector += hand2.palm_position
+                hand2PalmPositionVector = hand2.palm_position
                 hand2PalmPositionX += hand2PalmPositionVector[0]
                 hand2PalmPositionY += hand2PalmPositionVector[1]
                 hand2PalmPositionZ += hand2PalmPositionVector[2]
@@ -691,24 +685,76 @@ class GenerateTrainingSet(Leap.Listener):
                 hand2ArmCenterX += hand2ArmCenterVector[0]
                 hand2ArmCenterY += hand2ArmCenterVector[1]
                 hand2ArmCenterZ += hand2ArmCenterVector[2]
-                hand2ArmUpVector = hand2.arm.basis[1]
-                hand2ArmUpVectorX += hand2ArmUpVector[0]
-                hand2ArmUpVectorY += hand2ArmUpVector[1]
-                hand2ArmUpVectorZ += hand2ArmUpVector[2]
-                if ( previousFrame and previousFrame.valid):
+                if ( previousFrame and previousFrame.is_valid):
                     hand2TranslationVector = hand2.translation(previousFrame)
                     hand2TranslationX += hand2TranslationVector[0]
                     hand2TranslationY += hand2TranslationVector[1]
                     hand2TranslationZ += hand2TranslationVector[2]
-                    hand2RotationAxisVector = hand2.rotationAxis(previousFrame)
+                    hand2RotationAxisVector = hand2.rotation_axis(previousFrame)
                     hand2RotationAxisX += hand2RotationAxisVector[0]
                     hand2RotationAxisY += hand2RotationAxisVector[1]
                     hand2RotationAxisZ += hand2RotationAxisVector[2]
-                    hand2RotationAngle += hand2.rotationAngle(previousFrame)
+                    hand2RotationAngle += hand2.rotation_angle(previousFrame)
+            previousFrame = frame
 
 
+        ans += str(sumHands/self.NUM_FRAME_GRABS) + ','
+        ans += str(sumFingers/self.NUM_FRAME_GRABS) + ','
+        ans += str(sumTranlsationX/self.NUM_FRAME_GRABS) + ','
+        ans += str(sumTranslationY/self.NUM_FRAME_GRABS) + ','
+        ans += str(sumTranslationZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(rotationAxisX/self.NUM_FRAME_GRABS) + ','
+        ans += str(rotationAxisY/self.NUM_FRAME_GRABS) + ','
+        ans += str(rotationAxisZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(rotationAngle/self.NUM_FRAME_GRABS) + ','
 
 
+        # hand1Type = 0
+        ans += str(hand1DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1PalmPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1PalmPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1PalmPositionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1GrabStrength/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1PinchStrength/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Confidence/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1ArmDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1ArmDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1ArmDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1ArmCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1ArmCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1ArmCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1TranslationX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1TranslationY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1TranslationZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1RotationAxisX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1RotationAxisY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1RotationAxisZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1RotationAngle/self.NUM_FRAME_GRABS) + ','
+
+        ans += str(hand2DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2PalmPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2PalmPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2PalmPositionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2GrabStrength/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2PinchStrength/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Confidence/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2ArmDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2ArmDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2ArmDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2ArmCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2ArmCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2ArmCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2TranslationX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2TranslationY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2TranslationZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2RotationAxisX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2RotationAxisY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2RotationAxisZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2RotationAngle/self.NUM_FRAME_GRABS) + ','
         return ans
 
 def main():
