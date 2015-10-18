@@ -37,13 +37,13 @@ class GenerateTrainingSet(Leap.Listener):
             for i in xrange(0, self.NUM_TRAINING_EXAMPLES):
                 print "Make gesture now for %s" % word
                 time.sleep(1)
-                result = self.generateGesture(controller)
+                result = self.captureGesture(controller)
                 writeFile.write(word + ',' + result + '\n')
                 print "Gesture successfully recorded. Next one starts in three seconds."
                 time.sleep(3)
 
 
-    def generateGesture(self, controller):
+    def captureGesture(self, controller):
         frames = []
         ans = ""
         for i in range(0, self.NUM_FRAME_GRABS):
@@ -115,8 +115,8 @@ class GenerateTrainingSet(Leap.Listener):
 
         ## Hand 1 Finger 1 begins here ##
         hand1Finger1DirectionX = 0
-        hand1Finger1DirectionX = 0
-        hand1Finger1DirectionX = 0
+        hand1Finger1DirectionY = 0
+        hand1Finger1DirectionZ = 0
         hand1Finger1Extended = 0
         # attributes of finger 1 metacarpals
         hand1Finger1MetacarpalCenterX = 0
@@ -165,8 +165,8 @@ class GenerateTrainingSet(Leap.Listener):
         ## Hand 1 Finger 2 Begins Here ##
 
         hand1Finger2DirectionX = 0
-        hand1Finger2DirectionX = 0
-        hand1Finger2DirectionX = 0
+        hand1Finger2DirectionY = 0
+        hand1Finger2DirectionZ = 0
         hand1Finger2Extended = 0
         # attributes of finger 2 metacarpals
         hand1Finger2MetacarpalCenterX = 0
@@ -215,8 +215,8 @@ class GenerateTrainingSet(Leap.Listener):
         ## Hand 1 Finger 3 Begins Here ##
 
         hand1Finger3DirectionX = 0
-        hand1Finger3DirectionX = 0
-        hand1Finger3DirectionX = 0
+        hand1Finger3DirectionY = 0
+        hand1Finger3DirectionZ = 0
         hand1Finger3Extended = 0
         # attributes of Finger 3 metacarpals
         hand1Finger3MetacarpalCenterX = 0
@@ -265,8 +265,8 @@ class GenerateTrainingSet(Leap.Listener):
         ## Hand 1 Finger 4 Begins Here ##
 
         hand1Finger4DirectionX = 0
-        hand1Finger4DirectionX = 0
-        hand1Finger4DirectionX = 0
+        hand1Finger4DirectionY = 0
+        hand1Finger4DirectionZ = 0
         hand1Finger4Extended = 0
         # attributes of Finger 4 metacarpals
         hand1Finger4MetacarpalCenterX = 0
@@ -315,8 +315,8 @@ class GenerateTrainingSet(Leap.Listener):
         ## Hand 1 Finger 5 Begins Here ##
 
         hand1Finger5DirectionX = 0
-        hand1Finger5DirectionX = 0
-        hand1Finger5DirectionX = 0
+        hand1Finger5DirectionY = 0
+        hand1Finger5DirectionZ = 0
         hand1Finger5Extended = 0
         # attributes of Finger 5 metacarpals
         hand1Finger5MetacarpalCenterX = 0
@@ -364,8 +364,8 @@ class GenerateTrainingSet(Leap.Listener):
 
         ## Hand 2 Finger 1 begins here ##
         hand2Finger1DirectionX = 0
-        hand2Finger1DirectionX = 0
-        hand2Finger1DirectionX = 0
+        hand2Finger1DirectionY = 0
+        hand2Finger1DirectionZ = 0
         hand2Finger1Extended = 0
         # attributes of finger 1 metacarpals
         hand2Finger1MetacarpalCenterX = 0
@@ -414,8 +414,8 @@ class GenerateTrainingSet(Leap.Listener):
         ## Hand 2 Finger 2 Begins Here ##
 
         hand2Finger2DirectionX = 0
-        hand2Finger2DirectionX = 0
-        hand2Finger2DirectionX = 0
+        hand2Finger2DirectionY = 0
+        hand2Finger2DirectionZ = 0
         hand2Finger2Extended = 0
         # attributes of finger 2 metacarpals
         hand2Finger2MetacarpalCenterX = 0
@@ -464,8 +464,8 @@ class GenerateTrainingSet(Leap.Listener):
         ## Hand 2 Finger 3 Begins Here ##
 
         hand2Finger3DirectionX = 0
-        hand2Finger3DirectionX = 0
-        hand2Finger3DirectionX = 0
+        hand2Finger3DirectionY = 0
+        hand2Finger3DirectionZ = 0
         hand2Finger3Extended = 0
         # attributes of Finger 3 metacarpals
         hand2Finger3MetacarpalCenterX = 0
@@ -514,8 +514,8 @@ class GenerateTrainingSet(Leap.Listener):
         ## Hand 2 Finger 4 Begins Here ##
 
         hand2Finger4DirectionX = 0
-        hand2Finger4DirectionX = 0
-        hand2Finger4DirectionX = 0
+        hand2Finger4DirectionY = 0
+        hand2Finger4DirectionZ = 0
         hand2Finger4Extended = 0
         # attributes of Finger 4 metacarpals
         hand2Finger4MetacarpalCenterX = 0
@@ -564,8 +564,8 @@ class GenerateTrainingSet(Leap.Listener):
         ## Hand 2 Finger 5 Begins Here ##
 
         hand2Finger5DirectionX = 0
-        hand2Finger5DirectionX = 0
-        hand2Finger5DirectionX = 0
+        hand2Finger5DirectionY = 0
+        hand2Finger5DirectionZ = 0
         hand2Finger5Extended = 0
         # attributes of Finger 5 metacarpals
         hand2Finger5MetacarpalCenterX = 0
@@ -662,49 +662,234 @@ class GenerateTrainingSet(Leap.Listener):
                     hand1RotationAngle += hand1.rotation_angle(previousFrame)
                 if(frame.hands[0].fingers[0] is not None):
                     ## Set Hand 1 Finger 1 ##
-                    hand1Finger1DirectionVector = frame.hands[0].fingers[0].direction
+                    hand1Finger1 = frame.hands[0].fingers[0]
+                    hand1Finger1DirectionVector = hand1Finger1.direction
                     hand1Finger1DirectionX = hand1Finger1DirectionVector[0]
                     hand1Finger1DirectionY = hand1Finger1DirectionVector[1]
                     hand1Finger1DirectionZ = hand1Finger1DirectionVector[2]
                     # attributes of finger 1 metacarpals
-                    hand1Finger1MetacarpalCenter = frame.hands[0].fingers[0].bone(0).center
+                    hand1Finger1MetacarpalCenter = hand1Finger1.bone(0).center
                     hand1Finger1MetacarpalCenterX = hand1Finger1MetacarpalCenter[0]
                     hand1Finger1MetacarpalCenterY = hand1Finger1MetacarpalCenter[1]
                     hand1Finger1MetacarpalCenterZ = hand1Finger1MetacarpalCenter[2]
-                    hand1Finger1MetacarpalDirection = frame.hands[0].fingers[0].bone(0).direction
+                    hand1Finger1MetacarpalDirection = hand1Finger1.bone(0).direction
                     hand1Finger1MetacarpalDirectionX = hand1Finger1MetacarpalDirection[0]
                     hand1Finger1MetacarpalDirectionY = hand1Finger1MetacarpalDirection[1]
                     hand1Finger1MetacarpalDirectionZ = hand1Finger1MetacarpalDirection[2]
                     # attributes of finger 1 proximal phalanx bone
-                    hand1Finger1ProximalPhalanxBoneCenter = frame.hands[0].fingers[0].bone(1).center
+                    hand1Finger1ProximalPhalanxBoneCenter = hand1Finger1.bone(1).center
                     hand1Finger1ProximalPhalanxBoneCenterX = hand1Finger1ProximalPhalanxBoneCenter[0]
                     hand1Finger1ProximalPhalanxBoneCenterY = hand1Finger1ProximalPhalanxBoneCenter[1]
                     hand1Finger1ProximalPhalanxBoneCenterZ = hand1Finger1ProximalPhalanxBoneCenter[2]
-                    hand1Finger1ProximalPhalanxBoneDirection = frame.hands[0].fingers[0].bone(1).direction
+                    hand1Finger1ProximalPhalanxBoneDirection = hand1Finger1.bone(1).direction
                     hand1Finger1ProximalPhalanxBoneDirectionX = hand1Finger1ProximalPhalanxBoneDirection[0]
                     hand1Finger1ProximalPhalanxBoneDirectionY = hand1Finger1ProximalPhalanxBoneDirection[1]
                     hand1Finger1ProximalPhalanxBoneDirectionZ = hand1Finger1ProximalPhalanxBoneDirection[2]
                     # attributes of finger 1 intermediate phalanx bone
-                    hand1Finger1IntermediatePhalanxBoneCenter = frame.hands[0].fingers[0].bone(2).center
+                    hand1Finger1IntermediatePhalanxBoneCenter = hand1Finger1.bone(2).center
                     hand1Finger1IntermediatePhalanxBoneCenterX = hand1Finger1IntermediatePhalanxBoneCenter[0]
                     hand1Finger1IntermediatePhalanxBoneCenterY = hand1Finger1IntermediatePhalanxBoneCenter[1]
                     hand1Finger1IntermediatePhalanxBoneCenterZ = hand1Finger1IntermediatePhalanxBoneCenter[2]
-                    hand1Finger1IntermediatePhalanxBoneDirection = frame.hands[0].fingers[0].bone(2).direction
+                    hand1Finger1IntermediatePhalanxBoneDirection = hand1Finger1.bone(2).direction
                     hand1Finger1IntermediatePhalanxBoneDirectionX = hand1Finger1IntermediatePhalanxBoneDirection[0]
                     hand1Finger1IntermediatePhalanxBoneDirectionY = hand1Finger1IntermediatePhalanxBoneDirection[1]
                     hand1Finger1IntermediatePhalanxBoneDirectionZ = hand1Finger1IntermediatePhalanxBoneDirection[2]
                     # attributes of finger 1 distal phalanx bone
-                    hand1Finger1DistalPhalanxBoneCenter = frame.hands[0].fingers[0].bone(3).center
+                    hand1Finger1DistalPhalanxBoneCenter = hand1Finger1.bone(3).center
                     hand1Finger1DistalPhalanxBoneCenterX = hand1Finger1DistalPhalanxBoneCenter[0]
                     hand1Finger1DistalPhalanxBoneCenterY = hand1Finger1DistalPhalanxBoneCenter[1]
                     hand1Finger1DistalPhalanxBoneCenterZ = hand1Finger1DistalPhalanxBoneCenter[2]
-                    hand1Finger1DistalPhalanxBoneDirection = frame.hands[0].fingers[0].bone(3).direction
+                    hand1Finger1DistalPhalanxBoneDirection = hand1Finger1.bone(3).direction
                     hand1Finger1DistalPhalanxBoneDirectionX = hand1Finger1DistalPhalanxBoneDirection[0]
                     hand1Finger1DistalPhalanxBoneDirectionY = hand1Finger1DistalPhalanxBoneDirection[1]
                     hand1Finger1DistalPhalanxBoneDirectionZ = hand1Finger1DistalPhalanxBoneDirection[2]
-                    hand1Finger1TipPositionX = frame.hands[0].fingers[0].joint_position(3)[0]
-                    hand1Finger1TipPositionY = frame.hands[0].fingers[0].joint_position(3)[1]
-                    hand1Finger1TipPositionZ = frame.hands[0].fingers[0].joint_position(3)[2]
+                    hand1Finger1TipPositionX = hand1Finger1.joint_position(3)[0]
+                    hand1Finger1TipPositionY = hand1Finger1.joint_position(3)[1]
+                    hand1Finger1TipPositionZ = hand1Finger1.joint_position(3)[2]
+                if(frame.hands[0].fingers[1] is not None):
+                    ## Set Hand 1 Finger 2 ##
+                    hand1Finger2 = frame.hands[0].fingers[1]
+                    hand1Finger2DirectionVector = hand1Finger2.direction
+                    hand1Finger2DirectionX = hand1Finger2DirectionVector[0]
+                    hand1Finger2DirectionY = hand1Finger2DirectionVector[1]
+                    hand1Finger2DirectionZ = hand1Finger2DirectionVector[2]
+                    # attributes of finger 2 metacarpals
+                    hand1Finger2MetacarpalCenter = hand1Finger2.bone(0).center
+                    hand1Finger2MetacarpalCenterX = hand1Finger2MetacarpalCenter[0]
+                    hand1Finger2MetacarpalCenterY = hand1Finger2MetacarpalCenter[1]
+                    hand1Finger2MetacarpalCenterZ = hand1Finger2MetacarpalCenter[2]
+                    hand1Finger2MetacarpalDirection = hand1Finger2.bone(0).direction
+                    hand1Finger2MetacarpalDirectionX = hand1Finger2MetacarpalDirection[0]
+                    hand1Finger2MetacarpalDirectionY = hand1Finger2MetacarpalDirection[1]
+                    hand1Finger2MetacarpalDirectionZ = hand1Finger2MetacarpalDirection[2]
+                    # attributes of finger 2 proximal phalanx bone
+                    hand1Finger2ProximalPhalanxBoneCenter = hand1Finger2.bone(1).center
+                    hand1Finger2ProximalPhalanxBoneCenterX = hand1Finger2ProximalPhalanxBoneCenter[0]
+                    hand1Finger2ProximalPhalanxBoneCenterY = hand1Finger2ProximalPhalanxBoneCenter[1]
+                    hand1Finger2ProximalPhalanxBoneCenterZ = hand1Finger2ProximalPhalanxBoneCenter[2]
+                    hand1Finger2ProximalPhalanxBoneDirection = hand1Finger2.bone(1).direction
+                    hand1Finger2ProximalPhalanxBoneDirectionX = hand1Finger2ProximalPhalanxBoneDirection[0]
+                    hand1Finger2ProximalPhalanxBoneDirectionY = hand1Finger2ProximalPhalanxBoneDirection[1]
+                    hand1Finger2ProximalPhalanxBoneDirectionZ = hand1Finger2ProximalPhalanxBoneDirection[2]
+                    # attributes of finger 2 intermediate phalanx bone
+                    hand1Finger2IntermediatePhalanxBoneCenter = hand1Finger2.bone(2).center
+                    hand1Finger2IntermediatePhalanxBoneCenterX = hand1Finger2IntermediatePhalanxBoneCenter[0]
+                    hand1Finger2IntermediatePhalanxBoneCenterY = hand1Finger2IntermediatePhalanxBoneCenter[1]
+                    hand1Finger2IntermediatePhalanxBoneCenterZ = hand1Finger2IntermediatePhalanxBoneCenter[2]
+                    hand1Finger2IntermediatePhalanxBoneDirection = hand1Finger2.bone(2).direction
+                    hand1Finger2IntermediatePhalanxBoneDirectionX = hand1Finger2IntermediatePhalanxBoneDirection[0]
+                    hand1Finger2IntermediatePhalanxBoneDirectionY = hand1Finger2IntermediatePhalanxBoneDirection[1]
+                    hand1Finger2IntermediatePhalanxBoneDirectionZ = hand1Finger2IntermediatePhalanxBoneDirection[2]
+                    # attributes of finger 2 distal phalanx bone
+                    hand1Finger2DistalPhalanxBoneCenter = hand1Finger2.bone(3).center
+                    hand1Finger2DistalPhalanxBoneCenterX = hand1Finger2DistalPhalanxBoneCenter[0]
+                    hand1Finger2DistalPhalanxBoneCenterY = hand1Finger2DistalPhalanxBoneCenter[1]
+                    hand1Finger2DistalPhalanxBoneCenterZ = hand1Finger2DistalPhalanxBoneCenter[2]
+                    hand1Finger2DistalPhalanxBoneDirection = hand1Finger2.bone(3).direction
+                    hand1Finger2DistalPhalanxBoneDirectionX = hand1Finger2DistalPhalanxBoneDirection[0]
+                    hand1Finger2DistalPhalanxBoneDirectionY = hand1Finger2DistalPhalanxBoneDirection[1]
+                    hand1Finger2DistalPhalanxBoneDirectionZ = hand1Finger2DistalPhalanxBoneDirection[2]
+                    hand1Finger2TipPositionX = hand1Finger2.joint_position(3)[0]
+                    hand1Finger2TipPositionY = hand1Finger2.joint_position(3)[1]
+                    hand1Finger2TipPositionZ = hand1Finger2.joint_position(3)[2]
+                if(frame.hands[0].fingers[2] is not None):
+                    ## Set Hand 1 Finger 3 ##
+                    hand1Finger3 = frame.hands[0].fingers[2]
+                    hand1Finger3DirectionVector = hand1Finger3.direction
+                    hand1Finger3DirectionX = hand1Finger3DirectionVector[0]
+                    hand1Finger3DirectionY = hand1Finger3DirectionVector[1]
+                    hand1Finger3DirectionZ = hand1Finger3DirectionVector[2]
+                    # attributes of finger 3 metacarpals
+                    hand1Finger3MetacarpalCenter = hand1Finger3.bone(0).center
+                    hand1Finger3MetacarpalCenterX = hand1Finger3MetacarpalCenter[0]
+                    hand1Finger3MetacarpalCenterY = hand1Finger3MetacarpalCenter[1]
+                    hand1Finger3MetacarpalCenterZ = hand1Finger3MetacarpalCenter[2]
+                    hand1Finger3MetacarpalDirection = hand1Finger3.bone(0).direction
+                    hand1Finger3MetacarpalDirectionX = hand1Finger3MetacarpalDirection[0]
+                    hand1Finger3MetacarpalDirectionY = hand1Finger3MetacarpalDirection[1]
+                    hand1Finger3MetacarpalDirectionZ = hand1Finger3MetacarpalDirection[2]
+                    # attributes of finger 3 proximal phalanx bone
+                    hand1Finger3ProximalPhalanxBoneCenter = hand1Finger3.bone(1).center
+                    hand1Finger3ProximalPhalanxBoneCenterX = hand1Finger3ProximalPhalanxBoneCenter[0]
+                    hand1Finger3ProximalPhalanxBoneCenterY = hand1Finger3ProximalPhalanxBoneCenter[1]
+                    hand1Finger3ProximalPhalanxBoneCenterZ = hand1Finger3ProximalPhalanxBoneCenter[2]
+                    hand1Finger3ProximalPhalanxBoneDirection = hand1Finger3.bone(1).direction
+                    hand1Finger3ProximalPhalanxBoneDirectionX = hand1Finger3ProximalPhalanxBoneDirection[0]
+                    hand1Finger3ProximalPhalanxBoneDirectionY = hand1Finger3ProximalPhalanxBoneDirection[1]
+                    hand1Finger3ProximalPhalanxBoneDirectionZ = hand1Finger3ProximalPhalanxBoneDirection[2]
+                    # attributes of finger 3 intermediate phalanx bone
+                    hand1Finger3IntermediatePhalanxBoneCenter = hand1Finger3.bone(2).center
+                    hand1Finger3IntermediatePhalanxBoneCenterX = hand1Finger3IntermediatePhalanxBoneCenter[0]
+                    hand1Finger3IntermediatePhalanxBoneCenterY = hand1Finger3IntermediatePhalanxBoneCenter[1]
+                    hand1Finger3IntermediatePhalanxBoneCenterZ = hand1Finger3IntermediatePhalanxBoneCenter[2]
+                    hand1Finger3IntermediatePhalanxBoneDirection = hand1Finger3.bone(2).direction
+                    hand1Finger3IntermediatePhalanxBoneDirectionX = hand1Finger3IntermediatePhalanxBoneDirection[0]
+                    hand1Finger3IntermediatePhalanxBoneDirectionY = hand1Finger3IntermediatePhalanxBoneDirection[1]
+                    hand1Finger3IntermediatePhalanxBoneDirectionZ = hand1Finger3IntermediatePhalanxBoneDirection[2]
+                    # attributes of finger 3 distal phalanx bone
+                    hand1Finger3DistalPhalanxBoneCenter = hand1Finger3.bone(3).center
+                    hand1Finger3DistalPhalanxBoneCenterX = hand1Finger3DistalPhalanxBoneCenter[0]
+                    hand1Finger3DistalPhalanxBoneCenterY = hand1Finger3DistalPhalanxBoneCenter[1]
+                    hand1Finger3DistalPhalanxBoneCenterZ = hand1Finger3DistalPhalanxBoneCenter[2]
+                    hand1Finger3DistalPhalanxBoneDirection = hand1Finger3.bone(3).direction
+                    hand1Finger3DistalPhalanxBoneDirectionX = hand1Finger3DistalPhalanxBoneDirection[0]
+                    hand1Finger3DistalPhalanxBoneDirectionY = hand1Finger3DistalPhalanxBoneDirection[1]
+                    hand1Finger3DistalPhalanxBoneDirectionZ = hand1Finger3DistalPhalanxBoneDirection[2]
+                    hand1Finger3TipPositionX = hand1Finger3.joint_position(3)[0]
+                    hand1Finger3TipPositionY = hand1Finger3.joint_position(3)[1]
+                    hand1Finger3TipPositionZ = hand1Finger3.joint_position(3)[2]
+                if(frame.hands[0].fingers[3] is not None):
+                    ## Set Hand 1 Finger 4 ##
+                    hand1Finger4 = frame.hands[0].fingers[3]
+                    hand1Finger4DirectionVector = hand1Finger4.direction
+                    hand1Finger4DirectionX = hand1Finger4DirectionVector[0]
+                    hand1Finger4DirectionY = hand1Finger4DirectionVector[1]
+                    hand1Finger4DirectionZ = hand1Finger4DirectionVector[2]
+                    # attributes of finger 4 metacarpals
+                    hand1Finger4MetacarpalCenter = hand1Finger4.bone(0).center
+                    hand1Finger4MetacarpalCenterX = hand1Finger4MetacarpalCenter[0]
+                    hand1Finger4MetacarpalCenterY = hand1Finger4MetacarpalCenter[1]
+                    hand1Finger4MetacarpalCenterZ = hand1Finger4MetacarpalCenter[2]
+                    hand1Finger4MetacarpalDirection = hand1Finger4.bone(0).direction
+                    hand1Finger4MetacarpalDirectionX = hand1Finger4MetacarpalDirection[0]
+                    hand1Finger4MetacarpalDirectionY = hand1Finger4MetacarpalDirection[1]
+                    hand1Finger4MetacarpalDirectionZ = hand1Finger4MetacarpalDirection[2]
+                    # attributes of finger 4 proximal phalanx bone
+                    hand1Finger4ProximalPhalanxBoneCenter = hand1Finger4.bone(1).center
+                    hand1Finger4ProximalPhalanxBoneCenterX = hand1Finger4ProximalPhalanxBoneCenter[0]
+                    hand1Finger4ProximalPhalanxBoneCenterY = hand1Finger4ProximalPhalanxBoneCenter[1]
+                    hand1Finger4ProximalPhalanxBoneCenterZ = hand1Finger4ProximalPhalanxBoneCenter[2]
+                    hand1Finger4ProximalPhalanxBoneDirection = hand1Finger4.bone(1).direction
+                    hand1Finger4ProximalPhalanxBoneDirectionX = hand1Finger4ProximalPhalanxBoneDirection[0]
+                    hand1Finger4ProximalPhalanxBoneDirectionY = hand1Finger4ProximalPhalanxBoneDirection[1]
+                    hand1Finger4ProximalPhalanxBoneDirectionZ = hand1Finger4ProximalPhalanxBoneDirection[2]
+                    # attributes of finger 4 intermediate phalanx bone
+                    hand1Finger4IntermediatePhalanxBoneCenter = hand1Finger4.bone(2).center
+                    hand1Finger4IntermediatePhalanxBoneCenterX = hand1Finger4IntermediatePhalanxBoneCenter[0]
+                    hand1Finger4IntermediatePhalanxBoneCenterY = hand1Finger4IntermediatePhalanxBoneCenter[1]
+                    hand1Finger4IntermediatePhalanxBoneCenterZ = hand1Finger4IntermediatePhalanxBoneCenter[2]
+                    hand1Finger4IntermediatePhalanxBoneDirection = hand1Finger4.bone(2).direction
+                    hand1Finger4IntermediatePhalanxBoneDirectionX = hand1Finger4IntermediatePhalanxBoneDirection[0]
+                    hand1Finger4IntermediatePhalanxBoneDirectionY = hand1Finger4IntermediatePhalanxBoneDirection[1]
+                    hand1Finger4IntermediatePhalanxBoneDirectionZ = hand1Finger4IntermediatePhalanxBoneDirection[2]
+                    # attributes of finger 4 distal phalanx bone
+                    hand1Finger4DistalPhalanxBoneCenter = hand1Finger4.bone(3).center
+                    hand1Finger4DistalPhalanxBoneCenterX = hand1Finger4DistalPhalanxBoneCenter[0]
+                    hand1Finger4DistalPhalanxBoneCenterY = hand1Finger4DistalPhalanxBoneCenter[1]
+                    hand1Finger4DistalPhalanxBoneCenterZ = hand1Finger4DistalPhalanxBoneCenter[2]
+                    hand1Finger4DistalPhalanxBoneDirection = hand1Finger4.bone(3).direction
+                    hand1Finger4DistalPhalanxBoneDirectionX = hand1Finger4DistalPhalanxBoneDirection[0]
+                    hand1Finger4DistalPhalanxBoneDirectionY = hand1Finger4DistalPhalanxBoneDirection[1]
+                    hand1Finger4DistalPhalanxBoneDirectionZ = hand1Finger4DistalPhalanxBoneDirection[2]
+                    hand1Finger4TipPositionX = hand1Finger4.joint_position(3)[0]
+                    hand1Finger4TipPositionY = hand1Finger4.joint_position(3)[1]
+                    hand1Finger4TipPositionZ = hand1Finger4.joint_position(3)[2]
+                if(frame.hands[0].fingers[4] is not None):
+                    ## Set Hand 1 Finger 5 ##
+                    hand1Finger5 = frame.hands[0].fingers[4]
+                    hand1Finger5DirectionVector = hand1Finger5.direction
+                    hand1Finger5DirectionX = hand1Finger5DirectionVector[0]
+                    hand1Finger5DirectionY = hand1Finger5DirectionVector[1]
+                    hand1Finger5DirectionZ = hand1Finger5DirectionVector[2]
+                    # attributes of finger 5 metacarpals
+                    hand1Finger5MetacarpalCenter = hand1Finger5.bone(0).center
+                    hand1Finger5MetacarpalCenterX = hand1Finger5MetacarpalCenter[0]
+                    hand1Finger5MetacarpalCenterY = hand1Finger5MetacarpalCenter[1]
+                    hand1Finger5MetacarpalCenterZ = hand1Finger5MetacarpalCenter[2]
+                    hand1Finger5MetacarpalDirection = hand1Finger5.bone(0).direction
+                    hand1Finger5MetacarpalDirectionX = hand1Finger5MetacarpalDirection[0]
+                    hand1Finger5MetacarpalDirectionY = hand1Finger5MetacarpalDirection[1]
+                    hand1Finger5MetacarpalDirectionZ = hand1Finger5MetacarpalDirection[2]
+                    # attributes of finger 5 proximal phalanx bone
+                    hand1Finger5ProximalPhalanxBoneCenter = hand1Finger5.bone(1).center
+                    hand1Finger5ProximalPhalanxBoneCenterX = hand1Finger5ProximalPhalanxBoneCenter[0]
+                    hand1Finger5ProximalPhalanxBoneCenterY = hand1Finger5ProximalPhalanxBoneCenter[1]
+                    hand1Finger5ProximalPhalanxBoneCenterZ = hand1Finger5ProximalPhalanxBoneCenter[2]
+                    hand1Finger5ProximalPhalanxBoneDirection = hand1Finger5.bone(1).direction
+                    hand1Finger5ProximalPhalanxBoneDirectionX = hand1Finger5ProximalPhalanxBoneDirection[0]
+                    hand1Finger5ProximalPhalanxBoneDirectionY = hand1Finger5ProximalPhalanxBoneDirection[1]
+                    hand1Finger5ProximalPhalanxBoneDirectionZ = hand1Finger5ProximalPhalanxBoneDirection[2]
+                    # attributes of finger 5 intermediate phalanx bone
+                    hand1Finger5IntermediatePhalanxBoneCenter = hand1Finger5.bone(2).center
+                    hand1Finger5IntermediatePhalanxBoneCenterX = hand1Finger5IntermediatePhalanxBoneCenter[0]
+                    hand1Finger5IntermediatePhalanxBoneCenterY = hand1Finger5IntermediatePhalanxBoneCenter[1]
+                    hand1Finger5IntermediatePhalanxBoneCenterZ = hand1Finger5IntermediatePhalanxBoneCenter[2]
+                    hand1Finger5IntermediatePhalanxBoneDirection = hand1Finger5.bone(2).direction
+                    hand1Finger5IntermediatePhalanxBoneDirectionX = hand1Finger5IntermediatePhalanxBoneDirection[0]
+                    hand1Finger5IntermediatePhalanxBoneDirectionY = hand1Finger5IntermediatePhalanxBoneDirection[1]
+                    hand1Finger5IntermediatePhalanxBoneDirectionZ = hand1Finger5IntermediatePhalanxBoneDirection[2]
+                    # attributes of finger 5 distal phalanx bone
+                    hand1Finger5DistalPhalanxBoneCenter = hand1Finger5.bone(3).center
+                    hand1Finger5DistalPhalanxBoneCenterX = hand1Finger5DistalPhalanxBoneCenter[0]
+                    hand1Finger5DistalPhalanxBoneCenterY = hand1Finger5DistalPhalanxBoneCenter[1]
+                    hand1Finger5DistalPhalanxBoneCenterZ = hand1Finger5DistalPhalanxBoneCenter[2]
+                    hand1Finger5DistalPhalanxBoneDirection = hand1Finger5.bone(3).direction
+                    hand1Finger5DistalPhalanxBoneDirectionX = hand1Finger5DistalPhalanxBoneDirection[0]
+                    hand1Finger5DistalPhalanxBoneDirectionY = hand1Finger5DistalPhalanxBoneDirection[1]
+                    hand1Finger5DistalPhalanxBoneDirectionZ = hand1Finger5DistalPhalanxBoneDirection[2]
+                    hand1Finger5TipPositionX = hand1Finger5.joint_position(3)[0]
+                    hand1Finger5TipPositionY = hand1Finger5.joint_position(3)[1]
+                    hand1Finger5TipPositionZ = hand1Finger5.joint_position(3)[2]
             if ( frame.hands[1] is not None):
                 hand2 = frame.hands[1]
                 # if ( hand2.isLeft):
@@ -740,6 +925,236 @@ class GenerateTrainingSet(Leap.Listener):
                     hand2RotationAxisY += hand2RotationAxisVector[1]
                     hand2RotationAxisZ += hand2RotationAxisVector[2]
                     hand2RotationAngle += hand2.rotation_angle(previousFrame)
+                if(frame.hands[1].fingers[0] is not None):
+                    ## Set Hand 1 Finger 1 ##
+                    hand2Finger1 = frame.hands[1].fingers[0]
+                    hand2Finger1DirectionVector = hand2Finger1.direction
+                    hand2Finger1DirectionX = hand2Finger1DirectionVector[0]
+                    hand2Finger1DirectionY = hand2Finger1DirectionVector[1]
+                    hand2Finger1DirectionZ = hand2Finger1DirectionVector[2]
+                    # attributes of finger 1 metacarpals
+                    hand2Finger1MetacarpalCenter = hand2Finger1.bone(0).center
+                    hand2Finger1MetacarpalCenterX = hand2Finger1MetacarpalCenter[0]
+                    hand2Finger1MetacarpalCenterY = hand2Finger1MetacarpalCenter[1]
+                    hand2Finger1MetacarpalCenterZ = hand2Finger1MetacarpalCenter[2]
+                    hand2Finger1MetacarpalDirection = hand2Finger1.bone(0).direction
+                    hand2Finger1MetacarpalDirectionX = hand2Finger1MetacarpalDirection[0]
+                    hand2Finger1MetacarpalDirectionY = hand2Finger1MetacarpalDirection[1]
+                    hand2Finger1MetacarpalDirectionZ = hand2Finger1MetacarpalDirection[2]
+                    # attributes of finger 1 proximal phalanx bone
+                    hand2Finger1ProximalPhalanxBoneCenter = hand2Finger1.bone(1).center
+                    hand2Finger1ProximalPhalanxBoneCenterX = hand2Finger1ProximalPhalanxBoneCenter[0]
+                    hand2Finger1ProximalPhalanxBoneCenterY = hand2Finger1ProximalPhalanxBoneCenter[1]
+                    hand2Finger1ProximalPhalanxBoneCenterZ = hand2Finger1ProximalPhalanxBoneCenter[2]
+                    hand2Finger1ProximalPhalanxBoneDirection = hand2Finger1.bone(1).direction
+                    hand2Finger1ProximalPhalanxBoneDirectionX = hand2Finger1ProximalPhalanxBoneDirection[0]
+                    hand2Finger1ProximalPhalanxBoneDirectionY = hand2Finger1ProximalPhalanxBoneDirection[1]
+                    hand2Finger1ProximalPhalanxBoneDirectionZ = hand2Finger1ProximalPhalanxBoneDirection[2]
+                    # attributes of finger 1 intermediate phalanx bone
+                    hand2Finger1IntermediatePhalanxBoneCenter = hand2Finger1.bone(2).center
+                    hand2Finger1IntermediatePhalanxBoneCenterX = hand2Finger1IntermediatePhalanxBoneCenter[0]
+                    hand2Finger1IntermediatePhalanxBoneCenterY = hand2Finger1IntermediatePhalanxBoneCenter[1]
+                    hand2Finger1IntermediatePhalanxBoneCenterZ = hand2Finger1IntermediatePhalanxBoneCenter[2]
+                    hand2Finger1IntermediatePhalanxBoneDirection = hand2Finger1.bone(2).direction
+                    hand2Finger1IntermediatePhalanxBoneDirectionX = hand2Finger1IntermediatePhalanxBoneDirection[0]
+                    hand2Finger1IntermediatePhalanxBoneDirectionY = hand2Finger1IntermediatePhalanxBoneDirection[1]
+                    hand2Finger1IntermediatePhalanxBoneDirectionZ = hand2Finger1IntermediatePhalanxBoneDirection[2]
+                    # attributes of finger 1 distal phalanx bone
+                    hand2Finger1DistalPhalanxBoneCenter = hand2Finger1.bone(3).center
+                    hand2Finger1DistalPhalanxBoneCenterX = hand2Finger1DistalPhalanxBoneCenter[0]
+                    hand2Finger1DistalPhalanxBoneCenterY = hand2Finger1DistalPhalanxBoneCenter[1]
+                    hand2Finger1DistalPhalanxBoneCenterZ = hand2Finger1DistalPhalanxBoneCenter[2]
+                    hand2Finger1DistalPhalanxBoneDirection = hand2Finger1.bone(3).direction
+                    hand2Finger1DistalPhalanxBoneDirectionX = hand2Finger1DistalPhalanxBoneDirection[0]
+                    hand2Finger1DistalPhalanxBoneDirectionY = hand2Finger1DistalPhalanxBoneDirection[1]
+                    hand2Finger1DistalPhalanxBoneDirectionZ = hand2Finger1DistalPhalanxBoneDirection[2]
+                    hand2Finger1TipPositionX = hand2Finger1.joint_position(3)[0]
+                    hand2Finger1TipPositionY = hand2Finger1.joint_position(3)[1]
+                    hand2Finger1TipPositionZ = hand2Finger1.joint_position(3)[2]
+                if(frame.hands[1].fingers[1] is not None):
+                    ## Set Hand 1 Finger 2 ##
+                    hand2Finger2 = frame.hands[1].fingers[1]
+                    hand2Finger2DirectionVector = hand2Finger2.direction
+                    hand2Finger2DirectionX = hand2Finger2DirectionVector[0]
+                    hand2Finger2DirectionY = hand2Finger2DirectionVector[1]
+                    hand2Finger2DirectionZ = hand2Finger2DirectionVector[2]
+                    # attributes of finger 2 metacarpals
+                    hand2Finger2MetacarpalCenter = hand2Finger2.bone(0).center
+                    hand2Finger2MetacarpalCenterX = hand2Finger2MetacarpalCenter[0]
+                    hand2Finger2MetacarpalCenterY = hand2Finger2MetacarpalCenter[1]
+                    hand2Finger2MetacarpalCenterZ = hand2Finger2MetacarpalCenter[2]
+                    hand2Finger2MetacarpalDirection = hand2Finger2.bone(0).direction
+                    hand2Finger2MetacarpalDirectionX = hand2Finger2MetacarpalDirection[0]
+                    hand2Finger2MetacarpalDirectionY = hand2Finger2MetacarpalDirection[1]
+                    hand2Finger2MetacarpalDirectionZ = hand2Finger2MetacarpalDirection[2]
+                    # attributes of finger 2 proximal phalanx bone
+                    hand2Finger2ProximalPhalanxBoneCenter = hand2Finger2.bone(1).center
+                    hand2Finger2ProximalPhalanxBoneCenterX = hand2Finger2ProximalPhalanxBoneCenter[0]
+                    hand2Finger2ProximalPhalanxBoneCenterY = hand2Finger2ProximalPhalanxBoneCenter[1]
+                    hand2Finger2ProximalPhalanxBoneCenterZ = hand2Finger2ProximalPhalanxBoneCenter[2]
+                    hand2Finger2ProximalPhalanxBoneDirection = hand2Finger2.bone(1).direction
+                    hand2Finger2ProximalPhalanxBoneDirectionX = hand2Finger2ProximalPhalanxBoneDirection[0]
+                    hand2Finger2ProximalPhalanxBoneDirectionY = hand2Finger2ProximalPhalanxBoneDirection[1]
+                    hand2Finger2ProximalPhalanxBoneDirectionZ = hand2Finger2ProximalPhalanxBoneDirection[2]
+                    # attributes of finger 2 intermediate phalanx bone
+                    hand2Finger2IntermediatePhalanxBoneCenter = hand2Finger2.bone(2).center
+                    hand2Finger2IntermediatePhalanxBoneCenterX = hand2Finger2IntermediatePhalanxBoneCenter[0]
+                    hand2Finger2IntermediatePhalanxBoneCenterY = hand2Finger2IntermediatePhalanxBoneCenter[1]
+                    hand2Finger2IntermediatePhalanxBoneCenterZ = hand2Finger2IntermediatePhalanxBoneCenter[2]
+                    hand2Finger2IntermediatePhalanxBoneDirection = hand2Finger2.bone(2).direction
+                    hand2Finger2IntermediatePhalanxBoneDirectionX = hand2Finger2IntermediatePhalanxBoneDirection[0]
+                    hand2Finger2IntermediatePhalanxBoneDirectionY = hand2Finger2IntermediatePhalanxBoneDirection[1]
+                    hand2Finger2IntermediatePhalanxBoneDirectionZ = hand2Finger2IntermediatePhalanxBoneDirection[2]
+                    # attributes of finger 2 distal phalanx bone
+                    hand2Finger2DistalPhalanxBoneCenter = hand2Finger2.bone(3).center
+                    hand2Finger2DistalPhalanxBoneCenterX = hand2Finger2DistalPhalanxBoneCenter[0]
+                    hand2Finger2DistalPhalanxBoneCenterY = hand2Finger2DistalPhalanxBoneCenter[1]
+                    hand2Finger2DistalPhalanxBoneCenterZ = hand2Finger2DistalPhalanxBoneCenter[2]
+                    hand2Finger2DistalPhalanxBoneDirection = hand2Finger2.bone(3).direction
+                    hand2Finger2DistalPhalanxBoneDirectionX = hand2Finger2DistalPhalanxBoneDirection[0]
+                    hand2Finger2DistalPhalanxBoneDirectionY = hand2Finger2DistalPhalanxBoneDirection[1]
+                    hand2Finger2DistalPhalanxBoneDirectionZ = hand2Finger2DistalPhalanxBoneDirection[2]
+                    hand2Finger2TipPositionX = hand2Finger2.joint_position(3)[0]
+                    hand2Finger2TipPositionY = hand2Finger2.joint_position(3)[1]
+                    hand2Finger2TipPositionZ = hand2Finger2.joint_position(3)[2]
+                if(frame.hands[1].fingers[2] is not None):
+                    ## Set Hand 1 Finger 3 ##
+                    hand2Finger3 = frame.hands[1].fingers[2]
+                    hand2Finger3DirectionVector = hand2Finger3.direction
+                    hand2Finger3DirectionX = hand2Finger3DirectionVector[0]
+                    hand2Finger3DirectionY = hand2Finger3DirectionVector[1]
+                    hand2Finger3DirectionZ = hand2Finger3DirectionVector[2]
+                    # attributes of finger 3 metacarpals
+                    hand2Finger3MetacarpalCenter = hand2Finger3.bone(0).center
+                    hand2Finger3MetacarpalCenterX = hand2Finger3MetacarpalCenter[0]
+                    hand2Finger3MetacarpalCenterY = hand2Finger3MetacarpalCenter[1]
+                    hand2Finger3MetacarpalCenterZ = hand2Finger3MetacarpalCenter[2]
+                    hand2Finger3MetacarpalDirection = hand2Finger3.bone(0).direction
+                    hand2Finger3MetacarpalDirectionX = hand2Finger3MetacarpalDirection[0]
+                    hand2Finger3MetacarpalDirectionY = hand2Finger3MetacarpalDirection[1]
+                    hand2Finger3MetacarpalDirectionZ = hand2Finger3MetacarpalDirection[2]
+                    # attributes of finger 3 proximal phalanx bone
+                    hand2Finger3ProximalPhalanxBoneCenter = hand2Finger3.bone(1).center
+                    hand2Finger3ProximalPhalanxBoneCenterX = hand2Finger3ProximalPhalanxBoneCenter[0]
+                    hand2Finger3ProximalPhalanxBoneCenterY = hand2Finger3ProximalPhalanxBoneCenter[1]
+                    hand2Finger3ProximalPhalanxBoneCenterZ = hand2Finger3ProximalPhalanxBoneCenter[2]
+                    hand2Finger3ProximalPhalanxBoneDirection = hand2Finger3.bone(1).direction
+                    hand2Finger3ProximalPhalanxBoneDirectionX = hand2Finger3ProximalPhalanxBoneDirection[0]
+                    hand2Finger3ProximalPhalanxBoneDirectionY = hand2Finger3ProximalPhalanxBoneDirection[1]
+                    hand2Finger3ProximalPhalanxBoneDirectionZ = hand2Finger3ProximalPhalanxBoneDirection[2]
+                    # attributes of finger 3 intermediate phalanx bone
+                    hand2Finger3IntermediatePhalanxBoneCenter = hand2Finger3.bone(2).center
+                    hand2Finger3IntermediatePhalanxBoneCenterX = hand2Finger3IntermediatePhalanxBoneCenter[0]
+                    hand2Finger3IntermediatePhalanxBoneCenterY = hand2Finger3IntermediatePhalanxBoneCenter[1]
+                    hand2Finger3IntermediatePhalanxBoneCenterZ = hand2Finger3IntermediatePhalanxBoneCenter[2]
+                    hand2Finger3IntermediatePhalanxBoneDirection = hand2Finger3.bone(2).direction
+                    hand2Finger3IntermediatePhalanxBoneDirectionX = hand2Finger3IntermediatePhalanxBoneDirection[0]
+                    hand2Finger3IntermediatePhalanxBoneDirectionY = hand2Finger3IntermediatePhalanxBoneDirection[1]
+                    hand2Finger3IntermediatePhalanxBoneDirectionZ = hand2Finger3IntermediatePhalanxBoneDirection[2]
+                    # attributes of finger 3 distal phalanx bone
+                    hand2Finger3DistalPhalanxBoneCenter = hand2Finger3.bone(3).center
+                    hand2Finger3DistalPhalanxBoneCenterX = hand2Finger3DistalPhalanxBoneCenter[0]
+                    hand2Finger3DistalPhalanxBoneCenterY = hand2Finger3DistalPhalanxBoneCenter[1]
+                    hand2Finger3DistalPhalanxBoneCenterZ = hand2Finger3DistalPhalanxBoneCenter[2]
+                    hand2Finger3DistalPhalanxBoneDirection = hand2Finger3.bone(3).direction
+                    hand2Finger3DistalPhalanxBoneDirectionX = hand2Finger3DistalPhalanxBoneDirection[0]
+                    hand2Finger3DistalPhalanxBoneDirectionY = hand2Finger3DistalPhalanxBoneDirection[1]
+                    hand2Finger3DistalPhalanxBoneDirectionZ = hand2Finger3DistalPhalanxBoneDirection[2]
+                    hand2Finger3TipPositionX = hand2Finger3.joint_position(3)[0]
+                    hand2Finger3TipPositionY = hand2Finger3.joint_position(3)[1]
+                    hand2Finger3TipPositionZ = hand2Finger3.joint_position(3)[2]
+                if(frame.hands[1].fingers[3] is not None):
+                    ## Set Hand 1 Finger 4 ##
+                    hand2Finger4 = frame.hands[1].fingers[3]
+                    hand2Finger4DirectionVector = hand2Finger4.direction
+                    hand2Finger4DirectionX = hand2Finger4DirectionVector[0]
+                    hand2Finger4DirectionY = hand2Finger4DirectionVector[1]
+                    hand2Finger4DirectionZ = hand2Finger4DirectionVector[2]
+                    # attributes of finger 4 metacarpals
+                    hand2Finger4MetacarpalCenter = hand2Finger4.bone(0).center
+                    hand2Finger4MetacarpalCenterX = hand2Finger4MetacarpalCenter[0]
+                    hand2Finger4MetacarpalCenterY = hand2Finger4MetacarpalCenter[1]
+                    hand2Finger4MetacarpalCenterZ = hand2Finger4MetacarpalCenter[2]
+                    hand2Finger4MetacarpalDirection = hand2Finger4.bone(0).direction
+                    hand2Finger4MetacarpalDirectionX = hand2Finger4MetacarpalDirection[0]
+                    hand2Finger4MetacarpalDirectionY = hand2Finger4MetacarpalDirection[1]
+                    hand2Finger4MetacarpalDirectionZ = hand2Finger4MetacarpalDirection[2]
+                    # attributes of finger 4 proximal phalanx bone
+                    hand2Finger4ProximalPhalanxBoneCenter = hand2Finger4.bone(1).center
+                    hand2Finger4ProximalPhalanxBoneCenterX = hand2Finger4ProximalPhalanxBoneCenter[0]
+                    hand2Finger4ProximalPhalanxBoneCenterY = hand2Finger4ProximalPhalanxBoneCenter[1]
+                    hand2Finger4ProximalPhalanxBoneCenterZ = hand2Finger4ProximalPhalanxBoneCenter[2]
+                    hand2Finger4ProximalPhalanxBoneDirection = hand2Finger4.bone(1).direction
+                    hand2Finger4ProximalPhalanxBoneDirectionX = hand2Finger4ProximalPhalanxBoneDirection[0]
+                    hand2Finger4ProximalPhalanxBoneDirectionY = hand2Finger4ProximalPhalanxBoneDirection[1]
+                    hand2Finger4ProximalPhalanxBoneDirectionZ = hand2Finger4ProximalPhalanxBoneDirection[2]
+                    # attributes of finger 4 intermediate phalanx bone
+                    hand2Finger4IntermediatePhalanxBoneCenter = hand2Finger4.bone(2).center
+                    hand2Finger4IntermediatePhalanxBoneCenterX = hand2Finger4IntermediatePhalanxBoneCenter[0]
+                    hand2Finger4IntermediatePhalanxBoneCenterY = hand2Finger4IntermediatePhalanxBoneCenter[1]
+                    hand2Finger4IntermediatePhalanxBoneCenterZ = hand2Finger4IntermediatePhalanxBoneCenter[2]
+                    hand2Finger4IntermediatePhalanxBoneDirection = hand2Finger4.bone(2).direction
+                    hand2Finger4IntermediatePhalanxBoneDirectionX = hand2Finger4IntermediatePhalanxBoneDirection[0]
+                    hand2Finger4IntermediatePhalanxBoneDirectionY = hand2Finger4IntermediatePhalanxBoneDirection[1]
+                    hand2Finger4IntermediatePhalanxBoneDirectionZ = hand2Finger4IntermediatePhalanxBoneDirection[2]
+                    # attributes of finger 4 distal phalanx bone
+                    hand2Finger4DistalPhalanxBoneCenter = hand2Finger4.bone(3).center
+                    hand2Finger4DistalPhalanxBoneCenterX = hand2Finger4DistalPhalanxBoneCenter[0]
+                    hand2Finger4DistalPhalanxBoneCenterY = hand2Finger4DistalPhalanxBoneCenter[1]
+                    hand2Finger4DistalPhalanxBoneCenterZ = hand2Finger4DistalPhalanxBoneCenter[2]
+                    hand2Finger4DistalPhalanxBoneDirection = hand2Finger4.bone(3).direction
+                    hand2Finger4DistalPhalanxBoneDirectionX = hand2Finger4DistalPhalanxBoneDirection[0]
+                    hand2Finger4DistalPhalanxBoneDirectionY = hand2Finger4DistalPhalanxBoneDirection[1]
+                    hand2Finger4DistalPhalanxBoneDirectionZ = hand2Finger4DistalPhalanxBoneDirection[2]
+                    hand2Finger4TipPositionX = hand2Finger4.joint_position(3)[0]
+                    hand2Finger4TipPositionY = hand2Finger4.joint_position(3)[1]
+                    hand2Finger4TipPositionZ = hand2Finger4.joint_position(3)[2]
+                if(frame.hands[1].fingers[4] is not None):
+                    ## Set Hand 1 Finger 5 ##
+                    hand2Finger5 = frame.hands[1].fingers[4]
+                    hand2Finger5DirectionVector = hand2Finger5.direction
+                    hand2Finger5DirectionX = hand2Finger5DirectionVector[0]
+                    hand2Finger5DirectionY = hand2Finger5DirectionVector[1]
+                    hand2Finger5DirectionZ = hand2Finger5DirectionVector[2]
+                    # attributes of finger 5 metacarpals
+                    hand2Finger5MetacarpalCenter = hand2Finger5.bone(0).center
+                    hand2Finger5MetacarpalCenterX = hand2Finger5MetacarpalCenter[0]
+                    hand2Finger5MetacarpalCenterY = hand2Finger5MetacarpalCenter[1]
+                    hand2Finger5MetacarpalCenterZ = hand2Finger5MetacarpalCenter[2]
+                    hand2Finger5MetacarpalDirection = hand2Finger5.bone(0).direction
+                    hand2Finger5MetacarpalDirectionX = hand2Finger5MetacarpalDirection[0]
+                    hand2Finger5MetacarpalDirectionY = hand2Finger5MetacarpalDirection[1]
+                    hand2Finger5MetacarpalDirectionZ = hand2Finger5MetacarpalDirection[2]
+                    # attributes of finger 5 proximal phalanx bone
+                    hand2Finger5ProximalPhalanxBoneCenter = hand2Finger5.bone(1).center
+                    hand2Finger5ProximalPhalanxBoneCenterX = hand2Finger5ProximalPhalanxBoneCenter[0]
+                    hand2Finger5ProximalPhalanxBoneCenterY = hand2Finger5ProximalPhalanxBoneCenter[1]
+                    hand2Finger5ProximalPhalanxBoneCenterZ = hand2Finger5ProximalPhalanxBoneCenter[2]
+                    hand2Finger5ProximalPhalanxBoneDirection = hand2Finger5.bone(1).direction
+                    hand2Finger5ProximalPhalanxBoneDirectionX = hand2Finger5ProximalPhalanxBoneDirection[0]
+                    hand2Finger5ProximalPhalanxBoneDirectionY = hand2Finger5ProximalPhalanxBoneDirection[1]
+                    hand2Finger5ProximalPhalanxBoneDirectionZ = hand2Finger5ProximalPhalanxBoneDirection[2]
+                    # attributes of finger 5 intermediate phalanx bone
+                    hand2Finger5IntermediatePhalanxBoneCenter = hand2Finger5.bone(2).center
+                    hand2Finger5IntermediatePhalanxBoneCenterX = hand2Finger5IntermediatePhalanxBoneCenter[0]
+                    hand2Finger5IntermediatePhalanxBoneCenterY = hand2Finger5IntermediatePhalanxBoneCenter[1]
+                    hand2Finger5IntermediatePhalanxBoneCenterZ = hand2Finger5IntermediatePhalanxBoneCenter[2]
+                    hand2Finger5IntermediatePhalanxBoneDirection = hand2Finger5.bone(2).direction
+                    hand2Finger5IntermediatePhalanxBoneDirectionX = hand2Finger5IntermediatePhalanxBoneDirection[0]
+                    hand2Finger5IntermediatePhalanxBoneDirectionY = hand2Finger5IntermediatePhalanxBoneDirection[1]
+                    hand2Finger5IntermediatePhalanxBoneDirectionZ = hand2Finger5IntermediatePhalanxBoneDirection[2]
+                    # attributes of finger 5 distal phalanx bone
+                    hand2Finger5DistalPhalanxBoneCenter = hand2Finger5.bone(3).center
+                    hand2Finger5DistalPhalanxBoneCenterX = hand2Finger5DistalPhalanxBoneCenter[0]
+                    hand2Finger5DistalPhalanxBoneCenterY = hand2Finger5DistalPhalanxBoneCenter[1]
+                    hand2Finger5DistalPhalanxBoneCenterZ = hand2Finger5DistalPhalanxBoneCenter[2]
+                    hand2Finger5DistalPhalanxBoneDirection = hand2Finger5.bone(3).direction
+                    hand2Finger5DistalPhalanxBoneDirectionX = hand2Finger5DistalPhalanxBoneDirection[0]
+                    hand2Finger5DistalPhalanxBoneDirectionY = hand2Finger5DistalPhalanxBoneDirection[1]
+                    hand2Finger5DistalPhalanxBoneDirectionZ = hand2Finger5DistalPhalanxBoneDirection[2]
+                    hand2Finger5TipPositionX = hand2Finger5.joint_position(3)[0]
+                    hand2Finger5TipPositionY = hand2Finger5.joint_position(3)[1]
+                    hand2Finger5TipPositionZ = hand2Finger5.joint_position(3)[2]
             previousFrame = frame
 
 
@@ -800,6 +1215,318 @@ class GenerateTrainingSet(Leap.Listener):
         ans += str(hand2RotationAxisY/self.NUM_FRAME_GRABS) + ','
         ans += str(hand2RotationAxisZ/self.NUM_FRAME_GRABS) + ','
         ans += str(hand2RotationAngle/self.NUM_FRAME_GRABS) + ','
+
+        ans += str(hand1Finger1DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1MetacarpalCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1MetacarpalCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1MetacarpalCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1MetacarpalDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1MetacarpalDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1MetacarpalDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1ProximalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1ProximalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1ProximalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1ProximalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1ProximalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1ProximalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1IntermediatePhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1IntermediatePhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1IntermediatePhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1IntermediatePhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1IntermediatePhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1IntermediatePhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1DistalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1DistalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1DistalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1DistalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1DistalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1DistalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1TipPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1TipPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger1TipPositionZ/self.NUM_FRAME_GRABS) + ','
+
+        ans += str(hand1Finger2DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2MetacarpalCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2MetacarpalCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2MetacarpalCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2MetacarpalDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2MetacarpalDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2MetacarpalDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2ProximalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2ProximalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2ProximalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2ProximalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2ProximalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2ProximalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2IntermediatePhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2IntermediatePhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2IntermediatePhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2IntermediatePhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2IntermediatePhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2IntermediatePhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2DistalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2DistalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2DistalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2DistalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2DistalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2DistalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2TipPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2TipPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger2TipPositionZ/self.NUM_FRAME_GRABS) + ','
+
+        ans += str(hand1Finger3DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3MetacarpalCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3MetacarpalCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3MetacarpalCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3MetacarpalDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3MetacarpalDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3MetacarpalDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3ProximalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3ProximalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3ProximalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3ProximalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3ProximalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3ProximalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3IntermediatePhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3IntermediatePhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3IntermediatePhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3IntermediatePhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3IntermediatePhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3IntermediatePhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3DistalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3DistalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3DistalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3DistalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3DistalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3DistalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3TipPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3TipPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger3TipPositionZ/self.NUM_FRAME_GRABS) + ','
+
+        ans += str(hand1Finger4DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4MetacarpalCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4MetacarpalCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4MetacarpalCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4MetacarpalDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4MetacarpalDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4MetacarpalDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4ProximalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4ProximalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4ProximalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4ProximalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4ProximalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4ProximalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4IntermediatePhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4IntermediatePhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4IntermediatePhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4IntermediatePhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4IntermediatePhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4IntermediatePhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4DistalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4DistalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4DistalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4DistalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4DistalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4DistalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4TipPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4TipPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger4TipPositionZ/self.NUM_FRAME_GRABS) + ','
+
+        ans += str(hand1Finger5DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5MetacarpalCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5MetacarpalCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5MetacarpalCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5MetacarpalDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5MetacarpalDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5MetacarpalDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5ProximalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5ProximalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5ProximalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5ProximalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5ProximalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5ProximalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5IntermediatePhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5IntermediatePhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5IntermediatePhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5IntermediatePhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5IntermediatePhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5IntermediatePhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5DistalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5DistalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5DistalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5DistalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5DistalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5DistalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5TipPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5TipPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand1Finger5TipPositionZ/self.NUM_FRAME_GRABS) + ','
+
+        ans += str(hand2Finger1DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1MetacarpalCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1MetacarpalCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1MetacarpalCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1MetacarpalDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1MetacarpalDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1MetacarpalDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1ProximalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1ProximalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1ProximalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1ProximalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1ProximalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1ProximalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1IntermediatePhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1IntermediatePhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1IntermediatePhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1IntermediatePhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1IntermediatePhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1IntermediatePhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1DistalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1DistalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1DistalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1DistalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1DistalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1DistalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1TipPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1TipPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger1TipPositionZ/self.NUM_FRAME_GRABS) + ','
+
+        ans += str(hand2Finger2DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2MetacarpalCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2MetacarpalCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2MetacarpalCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2MetacarpalDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2MetacarpalDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2MetacarpalDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2ProximalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2ProximalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2ProximalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2ProximalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2ProximalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2ProximalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2IntermediatePhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2IntermediatePhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2IntermediatePhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2IntermediatePhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2IntermediatePhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2IntermediatePhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2DistalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2DistalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2DistalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2DistalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2DistalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2DistalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2TipPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2TipPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger2TipPositionZ/self.NUM_FRAME_GRABS) + ','
+
+        ans += str(hand2Finger3DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3MetacarpalCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3MetacarpalCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3MetacarpalCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3MetacarpalDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3MetacarpalDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3MetacarpalDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3ProximalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3ProximalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3ProximalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3ProximalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3ProximalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3ProximalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3IntermediatePhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3IntermediatePhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3IntermediatePhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3IntermediatePhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3IntermediatePhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3IntermediatePhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3DistalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3DistalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3DistalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3DistalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3DistalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3DistalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3TipPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3TipPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger3TipPositionZ/self.NUM_FRAME_GRABS) + ','
+
+        ans += str(hand2Finger4DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4MetacarpalCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4MetacarpalCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4MetacarpalCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4MetacarpalDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4MetacarpalDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4MetacarpalDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4ProximalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4ProximalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4ProximalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4ProximalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4ProximalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4ProximalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4IntermediatePhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4IntermediatePhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4IntermediatePhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4IntermediatePhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4IntermediatePhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4IntermediatePhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4DistalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4DistalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4DistalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4DistalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4DistalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4DistalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4TipPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4TipPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger4TipPositionZ/self.NUM_FRAME_GRABS) + ','
+
+        ans += str(hand2Finger5DirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5DirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5DirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5MetacarpalCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5MetacarpalCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5MetacarpalCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5MetacarpalDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5MetacarpalDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5MetacarpalDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5ProximalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5ProximalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5ProximalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5ProximalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5ProximalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5ProximalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5IntermediatePhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5IntermediatePhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5IntermediatePhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5IntermediatePhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5IntermediatePhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5IntermediatePhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5DistalPhalanxBoneCenterX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5DistalPhalanxBoneCenterY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5DistalPhalanxBoneCenterZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5DistalPhalanxBoneDirectionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5DistalPhalanxBoneDirectionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5DistalPhalanxBoneDirectionZ/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5TipPositionX/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5TipPositionY/self.NUM_FRAME_GRABS) + ','
+        ans += str(hand2Finger5TipPositionZ/self.NUM_FRAME_GRABS)
+
+
         return ans
 
 def main():
