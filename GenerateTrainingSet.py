@@ -660,6 +660,51 @@ class GenerateTrainingSet(Leap.Listener):
                     hand1RotationAxisY += hand1RotationAxisVector[1]
                     hand1RotationAxisZ += hand1RotationAxisVector[2]
                     hand1RotationAngle += hand1.rotation_angle(previousFrame)
+                if(frame.hands[0].fingers[0] is not None):
+                    ## Set Hand 1 Finger 1 ##
+                    hand1Finger1DirectionVector = frame.hands[0].fingers[0].direction
+                    hand1Finger1DirectionX = hand1Finger1DirectionVector[0]
+                    hand1Finger1DirectionY = hand1Finger1DirectionVector[1]
+                    hand1Finger1DirectionZ = hand1Finger1DirectionVector[2]
+                    # attributes of finger 1 metacarpals
+                    hand1Finger1MetacarpalCenter = frame.hands[0].fingers[0].bone(0).center
+                    hand1Finger1MetacarpalCenterX = hand1Finger1MetacarpalCenter[0]
+                    hand1Finger1MetacarpalCenterY = hand1Finger1MetacarpalCenter[1]
+                    hand1Finger1MetacarpalCenterZ = hand1Finger1MetacarpalCenter[2]
+                    hand1Finger1MetacarpalDirection = frame.hands[0].fingers[0].bone(0).direction
+                    hand1Finger1MetacarpalDirectionX = hand1Finger1MetacarpalDirection[0]
+                    hand1Finger1MetacarpalDirectionY = hand1Finger1MetacarpalDirection[1]
+                    hand1Finger1MetacarpalDirectionZ = hand1Finger1MetacarpalDirection[2]
+                    # attributes of finger 1 proximal phalanx bone
+                    hand1Finger1ProximalPhalanxBoneCenter = frame.hands[0].fingers[0].bone(1).center
+                    hand1Finger1ProximalPhalanxBoneCenterX = hand1Finger1ProximalPhalanxBoneCenter[0]
+                    hand1Finger1ProximalPhalanxBoneCenterY = hand1Finger1ProximalPhalanxBoneCenter[1]
+                    hand1Finger1ProximalPhalanxBoneCenterZ = hand1Finger1ProximalPhalanxBoneCenter[2]
+                    hand1Finger1ProximalPhalanxBoneDirection = frame.hands[0].fingers[0].bone(1).direction
+                    hand1Finger1ProximalPhalanxBoneDirectionX = hand1Finger1ProximalPhalanxBoneDirection[0]
+                    hand1Finger1ProximalPhalanxBoneDirectionY = hand1Finger1ProximalPhalanxBoneDirection[1]
+                    hand1Finger1ProximalPhalanxBoneDirectionZ = hand1Finger1ProximalPhalanxBoneDirection[2]
+                    # attributes of finger 1 intermediate phalanx bone
+                    hand1Finger1IntermediatePhalanxBoneCenter = frame.hands[0].fingers[0].bone(2).center
+                    hand1Finger1IntermediatePhalanxBoneCenterX = hand1Finger1IntermediatePhalanxBoneCenter[0]
+                    hand1Finger1IntermediatePhalanxBoneCenterY = hand1Finger1IntermediatePhalanxBoneCenter[1]
+                    hand1Finger1IntermediatePhalanxBoneCenterZ = hand1Finger1IntermediatePhalanxBoneCenter[2]
+                    hand1Finger1IntermediatePhalanxBoneDirection = frame.hands[0].fingers[0].bone(2).direction
+                    hand1Finger1IntermediatePhalanxBoneDirectionX = hand1Finger1IntermediatePhalanxBoneDirection[0]
+                    hand1Finger1IntermediatePhalanxBoneDirectionY = hand1Finger1IntermediatePhalanxBoneDirection[1]
+                    hand1Finger1IntermediatePhalanxBoneDirectionZ = hand1Finger1IntermediatePhalanxBoneDirection[2]
+                    # attributes of finger 1 distal phalanx bone
+                    hand1Finger1DistalPhalanxBoneCenter = frame.hands[0].fingers[0].bone(3).center
+                    hand1Finger1DistalPhalanxBoneCenterX = hand1Finger1DistalPhalanxBoneCenter[0]
+                    hand1Finger1DistalPhalanxBoneCenterY = hand1Finger1DistalPhalanxBoneCenter[1]
+                    hand1Finger1DistalPhalanxBoneCenterZ = hand1Finger1DistalPhalanxBoneCenter[2]
+                    hand1Finger1DistalPhalanxBoneDirection = frame.hands[0].fingers[0].bone(3).direction
+                    hand1Finger1DistalPhalanxBoneDirectionX = hand1Finger1DistalPhalanxBoneDirection[0]
+                    hand1Finger1DistalPhalanxBoneDirectionY = hand1Finger1DistalPhalanxBoneDirection[1]
+                    hand1Finger1DistalPhalanxBoneDirectionZ = hand1Finger1DistalPhalanxBoneDirection[2]
+                    hand1Finger1TipPositionX = frame.hands[0].fingers[0].joint_position(3)[0]
+                    hand1Finger1TipPositionY = frame.hands[0].fingers[0].joint_position(3)[1]
+                    hand1Finger1TipPositionZ = frame.hands[0].fingers[0].joint_position(3)[2]
             if ( frame.hands[1] is not None):
                 hand2 = frame.hands[1]
                 # if ( hand2.isLeft):
