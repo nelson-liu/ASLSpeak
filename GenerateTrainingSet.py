@@ -1,9 +1,9 @@
 ################################################################################
-# Copyright (C) 2012-2013 Leap Motion, Inc. All rights reserved.               #
-# Leap Motion proprietary and confidential. Not for distribution.              #
-# Use subject to the terms of the Leap Motion SDK Agreement available at       #
-# https://developer.leapmotion.com/sdk_agreement, or another agreement         #
-# between Leap Motion and you, your company or other organization.             #
+# Written by Nicholas Bowman and Nelson Liu                                    #
+# DubHacks 2015                                                                #
+# Last modified 10/18/15                                                       #
+# This class aids a user in creating custom training data for sign language    #
+# translation with the Leap Motion controller.                                 #
 ################################################################################
 
 import Leap, sys, thread, time
