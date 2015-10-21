@@ -5,7 +5,7 @@ Built by
  - [Nelson Liu](https://github.com/nelson-liu/)
  - [Nick Bowman](https://github.com/nick-bowman)
 
-in 24 hours at DubHacks 2015.
+in 24 hours at DubHacks 2015. [ASLSpeak on DevPost](http://devpost.com/software/aslspeak)
 
 Dataset Details
 ================================
@@ -13,7 +13,9 @@ Dataset Details
 1. Title: Sign Language Recognition Data
 
 2. Source Information
-   -- Creator: Nelson Liu, Nick Bowman
+   -- Creators:
+   - [Nelson Liu](https://github.com/nelson-liu/)
+   - [Nick Bowman](https://github.com/nick-bowman)
 
 3. Past Usage:
    -- "ASLSpeak", a project that utilizes machine learning to translate sign language to spoken word.
