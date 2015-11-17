@@ -1,3 +1,4 @@
+*Please note: this code was written at a hackathon, and is thus quite messy. We are actively looking for opportunities to refactor it. In fact, we may be doing so while you are reading this very line of text! Thanks for your understanding.*
 # ASLSpeak
 Decode sign language using the Leap Motion, and speak it!
 Winner of "Best Overall Use of Microsoft Tech" and "Best Use of Data".
